@@ -20,8 +20,15 @@ WHERE id = :id
 DELETE FROM users
 WHERE id = :id
 
--- name: create-project!
+-- name: create-project<!
 -- create a project
 insert into project
 (name, goals, argument, expected_results)
-values (:name, :goals, :argument, :expected_results)
+values (:name, :goals, :argument, :expected)
+
+-- name: list-projects
+select * from project
+
+
+-- name: get-project
+select * from project where id = :id

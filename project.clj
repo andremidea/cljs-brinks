@@ -18,6 +18,7 @@
                  [org.apache.logging.log4j/log4j-core "2.5"]
                  [com.taoensso/tower "3.0.2"]
                  [compojure "1.4.0"]
+                 [metosin/compojure-api "0.24.3"]
                  [ring-webjars "0.1.1"]
                  [ring/ring-defaults "0.1.5"]
                  [ring-ttl-session "0.3.0"]

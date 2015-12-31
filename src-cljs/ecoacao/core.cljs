@@ -35,7 +35,9 @@
          (when-not @collapsed? {:class "in"})
          [:ul.nav.navbar-nav
           [nav-link "#/" "Home" :home collapsed?]
-          [nav-link "#/about" "About" :about collapsed?]]]]])))
+          [nav-link "#/about" "About" :about collapsed?]
+          [nav-link "#/new-project" "Projeto" :project collapsed?]
+          [nav-link "#/projects" "Projetos" :project collapsed?]]]]])))
 
 (defn about-page []
   [:div.container
@@ -58,9 +60,81 @@
        [:div {:dangerouslySetInnerHTML
               {:__html (md->html docs)}}]]])])
 
+(defn form-group
+  ([id type placeholder label v k]
+   (form-group id type placeholder label v k :input))
+
+  ([id type placeholder label v k input-type]
+   [:div {:class "form-group"}
+    [:label {:for id} label]
+    [input-type {:type type, :class "form-control", :id id, :placeholder placeholder :value (k @v) :on-change #(swap! v assoc k (-> % .-target .-value))}]]))
+
+(defn text-area
+  [id placeholder label rows v k]
+   [:div {:class "form-group"}
+    [:label {:for id} label]
+    [:textarea {:class "form-control", :id id, :placeholder placeholder :rows rows :value (k @v) :on-change #(swap! v assoc k (-> % .-target .-value))}]])
+
+
+(defn new-project-page []
+  (let [project (atom {:name "name" :goals "" :argument "" :expected ""})
+        save-project (fn []
+                       (POST "/api/project"
+                           {:params @project
+                            :error-handler #(js/console.log "error" %)
+                            :response-format :transit
+                            :handler (fn [response]
+                                       (session/put! :project response)
+                                       (secretary/dispatch! (str "/project/" (:id response))))}))]
+    (fn []
+      [:form
+       (form-group "name" "text" "Qual o nome do Projeto?" "Nome do Projeto: " project :name)
+       (text-area "goals" "Qual o Objetivo do Projeto?" "Objetivo:" 3 project :goals)
+       (text-area "argument" "Porque esse projeto existe?" "Justificativa:" 3 project :argument)
+       (text-area "expected" "Quais os Resultados Esperados?" "Resultados Esperados:" 3 project :expected)
+       [:button {:class "btn btn-default" :on-click save-project} "Cadastrar" ]])))
+
+(defn project-page []
+  (let [project (atom (session/get! :project))
+        id (session/get :project-id)]
+    (fn []
+      (when (nil? (:id @project))
+        (prn (str @project))
+        (GET (str "/api/project/" id)
+            {:response-format :transit
+             :handler #(reset! project %)}))
+      [:div.container
+       [:div.row
+        [:div.col-md-12
+         [:h1 (:name @project)]]]])))
+
+(defn projects-page []
+  (let [projects (atom [])]
+    (fn []
+      (when (empty? @projects)
+        (GET "/api/project"
+          {:response-format :transit
+           :error-handler #(js/console.log "erro" %)
+           :handler #(reset! projects %)}))
+      [:table
+       [:thead
+        [:th "Nome"][:th "Objetivo"][:th "Justificativa"][:th "Resultados Esperados"]]
+       [:tbody
+        (for [project @projects]
+          [:tr
+           [:td (:name project)]
+           [:td (:goals project)]
+           [:td (:argument project)]
+           [:td (:expected_results project)]
+           [:td [:button {:on-click #(secretary/dispatch! (str "/project/" (:id project)))} "Go"]]])]])))
+
+
 (def pages
   {:home #'home-page
-   :about #'about-page})
+   :about #'about-page
+   :new-project new-project-page
+   :project project-page
+   :projects projects-page})
 
 (defn page []
   [(pages (session/get :page))])
@@ -74,6 +148,16 @@
 
 (secretary/defroute "/about" []
   (session/put! :page :about))
+
+(secretary/defroute "/new-project" []
+  (session/put! :page :new-project))
+
+(secretary/defroute "/project/:id" [id]
+  (session/put! :project-id id)
+  (session/put! :page :project))
+
+(secretary/defroute "/projects" []
+  (session/put! :page :projects))
 
 ;; -------------------------
 ;; History

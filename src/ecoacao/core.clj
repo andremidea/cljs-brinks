@@ -15,7 +15,6 @@
       (string? port) (Integer/parseInt port)
       (number? port) port
       :else          (throw (Exception. (str "invalid port value: " port))))))
-
 (defn stop-nrepl []
   (when-let [server @nrepl-server]
     (nrepl/stop-server server)))
@@ -72,3 +71,4 @@
     (do (migrations/migrate args) (System/exit 0))
     :else
     (start-app args)))
+  

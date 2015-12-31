@@ -1,15 +1,14 @@
 (ns ecoacao.routes.project
   (:require [ecoacao.layout :as layout]
-            [compojure.core :refer [defroutes GET POST]]
+            [compojure.api.sweet :refer [defapi GET* POST*]]
             [ring.util.http-response :refer [ok]]
             [ecoacao.db.core :as db]))
 
 
-(defroutes project-routes
-  (GET "/project" [] (ok))
-  (POST "/project" [name
-                    goals
-                    argument
-                    expected_results]
-    (db/create-project! name goals argument expected_results)))
+(defapi project-routes
+  (GET* "/api/project" [] {:body (db/list-projects)})
+  (GET* "/api/project/:id" [id] {:body (first (db/get-project {:id (Integer/parseInt id)}))})
+  (POST* "/api/project" {params :params}
+         (let [project (db/create-project<! params)]
+           (ok project))))
 
