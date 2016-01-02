@@ -1,19 +1,19 @@
 (ns ecoacao.db.core
-  (:require
-    [cheshire.core :refer [generate-string parse-string]]
-    [clojure.java.jdbc :as jdbc]
-    [conman.core :as conman]
-    [environ.core :refer [env]]
-    [mount.core :refer [defstate]])
-  (:import org.postgresql.util.PGobject
-           org.postgresql.jdbc4.Jdbc4Array
-           clojure.lang.IPersistentMap
+  (:require [cheshire.core :refer [generate-string parse-string]]
+            [clojure.java.jdbc :as jdbc]
+            [conman.core :as conman]
+            [ecoacao.misc :as misc]
+            [environ.core :refer [env]]
+            [mount.core :refer [defstate]])
+  (:import clojure.lang.IPersistentMap
            clojure.lang.IPersistentVector
            [java.sql
             BatchUpdateException
             Date
             Timestamp
-            PreparedStatement]))
+            PreparedStatement]
+           org.postgresql.jdbc4.Jdbc4Array
+           org.postgresql.util.PGobject))
 
 (def pool-spec
   {:adapter    :postgresql
@@ -78,3 +78,9 @@
   (sql-value [value] (to-pg-json value))
   IPersistentVector
   (sql-value [value] (to-pg-json value)))
+
+(defn from-db [result]
+  (misc/underscore->dash result))
+
+(defn to-db [input]
+  (misc/dash->underscore input))

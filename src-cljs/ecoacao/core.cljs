@@ -5,7 +5,8 @@
             [goog.events :as events]
             [goog.history.EventType :as HistoryEventType]
             [markdown.core :refer [md->html]]
-            [ajax.core :refer [GET POST]])
+            [ajax.core :refer [GET POST]]
+            [reagent-forms.core :refer [bind-fields]])
   (:import goog.History))
 
 (defn nav-link [uri title page collapsed?]
@@ -36,8 +37,8 @@
          [:ul.nav.navbar-nav
           [nav-link "#/" "Home" :home collapsed?]
           [nav-link "#/about" "About" :about collapsed?]
-          [nav-link "#/new-project" "Projeto" :project collapsed?]
-          [nav-link "#/projects" "Projetos" :project collapsed?]]]]])))
+          [nav-link "#/new-project" "Novo Projeto" :new-project collapsed?]
+          [nav-link "#/projects" "Listar Projetos" :projects collapsed?]]]]])))
 
 (defn about-page []
   [:div.container
@@ -77,7 +78,7 @@
 
 
 (defn new-project-page []
-  (let [project (atom {:name "name" :goals "" :argument "" :expected ""})
+  (let [project (atom {:name "" :goals "" :argument "" :expected-results ""})
         save-project (fn []
                        (POST "/api/project"
                            {:params @project
@@ -91,22 +92,34 @@
        (form-group "name" "text" "Qual o nome do Projeto?" "Nome do Projeto: " project :name)
        (text-area "goals" "Qual o Objetivo do Projeto?" "Objetivo:" 3 project :goals)
        (text-area "argument" "Porque esse projeto existe?" "Justificativa:" 3 project :argument)
-       (text-area "expected" "Quais os Resultados Esperados?" "Resultados Esperados:" 3 project :expected)
+       (text-area "expected" "Quais os Resultados Esperados?" "Resultados Esperados:" 3 project :expected-results)
        [:button {:class "btn btn-default" :on-click save-project} "Cadastrar" ]])))
+
+(defn row [label & input]
+  [:div.row
+   [:div.col-md-2 [:label label]]
+   [:div.col-md-5 input]])
+
+(def project-form
+  [:div
+    (row "Nome" [:input.form-control {:field :text :id :name :readOnly true}])
+    (row "Aprovado?"
+         [:input.radio-inline {:field :radio :value true :name :approved} "Sim"]
+         [:input.radio-inline {:field :radio :value false :name :approved} "Não"])])
 
 (defn project-page []
   (let [project (atom (session/get! :project))
         id (session/get :project-id)]
+    (when (nil? (:id @project))
+      (prn (str @project))
+      (GET (str "/api/project/" id)
+          {:response-format :transit
+           :handler #(reset! project %)}))
     (fn []
-      (when (nil? (:id @project))
-        (prn (str @project))
-        (GET (str "/api/project/" id)
-            {:response-format :transit
-             :handler #(reset! project %)}))
       [:div.container
-       [:div.row
-        [:div.col-md-12
-         [:h1 (:name @project)]]]])))
+       [:div.page-header "Moderar Projeto"]
+        [bind-fields project-form project]
+        [:button.btn.btn-default {:on-click #(js/console.log (str @project))} "Salvar"]])))
 
 (defn projects-page []
   (let [projects (atom [])]
@@ -116,17 +129,21 @@
           {:response-format :transit
            :error-handler #(js/console.log "erro" %)
            :handler #(reset! projects %)}))
-      [:table
-       [:thead
-        [:th "Nome"][:th "Objetivo"][:th "Justificativa"][:th "Resultados Esperados"]]
-       [:tbody
-        (for [project @projects]
-          [:tr
-           [:td (:name project)]
-           [:td (:goals project)]
-           [:td (:argument project)]
-           [:td (:expected_results project)]
-           [:td [:button {:on-click #(secretary/dispatch! (str "/project/" (:id project)))} "Go"]]])]])))
+      [:div.container
+       [:div.row
+        [:div.col-md-12
+         [:table.table
+          [:thead
+           [:th "Nome"][:th "Objetivo"][:th "Justificativa"][:th "Resultados Esperados"]]
+          [:tbody
+           (for [project @projects]
+             ^{:key project}
+             [:tr
+              [:td (:name project)]
+              [:td (:goals project)]
+              [:td (:argument project)]
+              [:td (:expected-results project)]
+              [:td [:button {:on-click #(secretary/dispatch! (str "/project/" (:id project)))} "Detalhes"]]])]] ] ] ])))
 
 
 (def pages

@@ -23,8 +23,8 @@ WHERE id = :id
 -- name: create-project<!
 -- create a project
 insert into project
-(name, goals, argument, expected_results)
-values (:name, :goals, :argument, :expected)
+(name, goals, argument, expected_results, approved)
+values (:name, :goals, :argument, :expected_results, :approved)
 
 -- name: list-projects
 select * from project
