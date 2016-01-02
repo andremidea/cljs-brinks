@@ -3,6 +3,7 @@
             [ecoacao.layout :refer [error-page]]
             [ecoacao.routes.home :refer [home-routes]]
             [ecoacao.routes.project :refer [project-routes]]
+            [ecoacao.routes.user :as r-user]
             [ecoacao.middleware :as middleware]
             [clojure.tools.logging :as log]
             [compojure.route :as route]
@@ -35,6 +36,7 @@
   (routes
     home-routes
     project-routes
+    r-user/routes
     (route/not-found
       (:body
         (error-page {:status 404

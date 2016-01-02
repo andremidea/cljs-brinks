@@ -41,6 +41,7 @@
   :uberjar-name "ecoacao.jar"
   :jvm-opts ["-server"]
   :resource-paths ["resources" "target/cljsbuild"]
+  :offline? true
 
   :main ecoacao.core
   :migratus {:store :database}

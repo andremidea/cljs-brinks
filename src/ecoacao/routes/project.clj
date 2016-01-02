@@ -1,5 +1,5 @@
 (ns ecoacao.routes.project
-  (:require [compojure.api.sweet :refer [defapi GET* POST*]]
+  (:require [compojure.api.sweet :refer [defapi GET* POST* PUT* context*]]
             [ecoacao.db.core :as db]
             [ecoacao.layout :as layout]
             [ecoacao.misc :as misc]
@@ -16,6 +16,13 @@
       (db/create-project<!)
       parse-project))
 
+(defn update-project [params]
+    (-> params
+        parse-project
+       (db/to-db)
+       (db/update-project!))
+  (get-project (:id params)))
+
 (defn get-project [id]
   (-> {:id (Integer/parseInt id)}
       (db/get-project)
@@ -28,8 +35,12 @@
 
 
 (defapi project-routes
-  (GET* "/api/project" [] {:body (list-projects)})
-  (GET* "/api/project/:id" [id] {:body (get-project id)})
-  (POST* "/api/project" {params :params}
-         (let [project (create-project params)]
-           (ok project))))
+  (context* "/api" []
+    (GET* "/project" [] {:body (list-projects)})
+    (GET* "/project/:id" [id] {:body (get-project id)})
+    (POST* "/project" {params :params}
+           (let [project (create-project params)]
+             (ok project)))
+    (POST* "/project/:id" {params :params}
+           (let [project (update-project params)]
+             (ok project)))))

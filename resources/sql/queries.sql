@@ -23,8 +23,8 @@ WHERE id = :id
 -- name: create-project<!
 -- create a project
 insert into project
-(name, goals, argument, expected_results, approved)
-values (:name, :goals, :argument, :expected_results, :approved)
+(name, goals, argument, expected_results, approved, user_id)
+values (:name, :goals, :argument, :expected_results, :approved, :user_id)
 
 -- name: list-projects
 select * from project
@@ -32,3 +32,12 @@ select * from project
 
 -- name: get-project
 select * from project where id = :id
+
+-- name: update-project!
+update project set approved = :approved, comments = :comments where id = :id::integer
+
+-- name: get-user
+select * from users where id = :id::integer
+
+-- name: get-user-projects
+select * from project where user_id = :id::integer

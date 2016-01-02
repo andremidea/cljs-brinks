@@ -1,0 +1,1050 @@
+[2015-12-31 07:35:38,829][INFO][org.eclipse.jetty.util.log] Logging initialized @14453ms
+[2015-12-31 07:36:27,992][INFO][com.zaxxer.hikari.HikariDataSource] HikariPool-0 - is starting.
+[2015-12-31 07:36:28,245][INFO][ecoacao.handler] #'ecoacao.db.core/*db* started
+[2015-12-31 07:36:28,247][INFO][ecoacao.config] 
+-=[ecoacao started successfully using the development profile]=-
+[2015-12-31 07:36:28,270][INFO][org.eclipse.jetty.server.Server] jetty-9.3.0.v20150612
+[2015-12-31 07:36:28,293][INFO][org.eclipse.jetty.server.ServerConnector] Started ServerConnector@690222f{HTTP/1.1,[http/1.1]}{0.0.0.0:3000}
+[2015-12-31 07:36:28,294][INFO][org.eclipse.jetty.server.Server] Started @63919ms
+[2015-12-31 07:40:42,084][WARN][org.eclipse.jetty.server.HttpChannel] //localhost:3000/assets/bootstrap/css/bootstrap-theme.min.css
+clojure.lang.ExceptionInfo: Couldnt' write to stream  {:exception #error {
+ :cause "Broken pipe"
+ :via
+ [{:type org.eclipse.jetty.io.EofException
+   :message nil
+   :at [org.eclipse.jetty.io.ChannelEndPoint flush "ChannelEndPoint.java" 200]}
+  {:type java.io.IOException
+   :message "Broken pipe"
+   :at [sun.nio.ch.FileDispatcherImpl write0 "FileDispatcherImpl.java" -2]}]
+ :trace
+ [[sun.nio.ch.FileDispatcherImpl write0 "FileDispatcherImpl.java" -2]
+  [sun.nio.ch.SocketDispatcher write "SocketDispatcher.java" 47]
+  [sun.nio.ch.IOUtil writeFromNativeBuffer "IOUtil.java" 93]
+  [sun.nio.ch.IOUtil write "IOUtil.java" 65]
+  [sun.nio.ch.SocketChannelImpl write "SocketChannelImpl.java" 471]
+  [org.eclipse.jetty.io.ChannelEndPoint flush "ChannelEndPoint.java" 178]
+  [org.eclipse.jetty.io.WriteFlusher flush "WriteFlusher.java" 408]
+  [org.eclipse.jetty.io.WriteFlusher write "WriteFlusher.java" 302]
+  [org.eclipse.jetty.io.AbstractEndPoint write "AbstractEndPoint.java" 135]
+  [org.eclipse.jetty.server.HttpConnection$SendCallback process "HttpConnection.java" 692]
+  [org.eclipse.jetty.util.IteratingCallback processing "IteratingCallback.java" 241]
+  [org.eclipse.jetty.util.IteratingCallback iterate "IteratingCallback.java" 224]
+  [org.eclipse.jetty.server.HttpConnection send "HttpConnection.java" 511]
+  [org.eclipse.jetty.server.HttpChannel sendResponse "HttpChannel.java" 601]
+  [org.eclipse.jetty.server.HttpChannel write "HttpChannel.java" 650]
+  [org.eclipse.jetty.server.HttpOutput write "HttpOutput.java" 172]
+  [org.eclipse.jetty.server.HttpOutput write "HttpOutput.java" 158]
+  [org.eclipse.jetty.server.HttpOutput write "HttpOutput.java" 436]
+  [clojure.java.io$fn__9219 invoke "io.clj" 297]
+  [clojure.lang.MultiFn invoke "MultiFn.java" 238]
+  [clojure.java.io$copy doInvoke "io.clj" 396]
+  [clojure.lang.RestFn invoke "RestFn.java" 425]
+  [qbits.jet.servlet$eval17482$fn__17483 invoke "servlet.clj" 124]
+  [qbits.jet.servlet$eval17451$fn__17452$G__17442__17459 invoke "servlet.clj" 104]
+  [qbits.jet.servlet$write_stream_BANG_ invoke "servlet.clj" 129]
+  [qbits.jet.servlet$eval17505$fn__17506 invoke "servlet.clj" 153]
+  [qbits.jet.servlet$eval17418$fn__17419$G__17409__17428 invoke "servlet.clj" 88]
+  [qbits.jet.servlet$set_response_body_BANG_ invoke "servlet.clj" 93]
+  [qbits.jet.servlet$set_body_BANG_ invoke "servlet.clj" 229]
+  [qbits.jet.servlet$eval17644$fn__17645 invoke "servlet.clj" 263]
+  [qbits.jet.servlet$eval17615$fn__17616$G__17606__17623 invoke "servlet.clj" 236]
+  [qbits.jet.servlet$update_response invoke "servlet.clj" 241]
+  [qbits.jet.server$make_handler$fn__17959 invoke "server.clj" 72]
+  [qbits.jet.server.proxy$org.eclipse.jetty.server.handler.AbstractHandler$ff19274a handle nil -1]
+  [org.eclipse.jetty.server.handler.HandlerList handle "HandlerList.java" 52]
+  [org.eclipse.jetty.server.handler.HandlerWrapper handle "HandlerWrapper.java" 118]
+  [org.eclipse.jetty.server.Server handle "Server.java" 515]
+  [org.eclipse.jetty.server.HttpChannel handle "HttpChannel.java" 291]
+  [org.eclipse.jetty.server.HttpConnection onFillable "HttpConnection.java" 242]
+  [org.eclipse.jetty.io.AbstractConnection$ReadCallback succeeded "AbstractConnection.java" 238]
+  [org.eclipse.jetty.io.FillInterest fillable "FillInterest.java" 95]
+  [org.eclipse.jetty.io.SelectChannelEndPoint$2 run "SelectChannelEndPoint.java" 57]
+  [org.eclipse.jetty.util.thread.strategy.ExecuteProduceConsume produceAndRun "ExecuteProduceConsume.java" 191]
+  [org.eclipse.jetty.util.thread.strategy.ExecuteProduceConsume run "ExecuteProduceConsume.java" 126]
+  [org.eclipse.jetty.util.thread.QueuedThreadPool runJob "QueuedThreadPool.java" 654]
+  [org.eclipse.jetty.util.thread.QueuedThreadPool$3 run "QueuedThreadPool.java" 572]
+  [java.lang.Thread run "Thread.java" 745]]}}
+	at clojure.core$ex_info.invoke(core.clj:4593)
+	at qbits.jet.servlet$write_stream_BANG_.invoke(servlet.clj:131)
+	at qbits.jet.servlet$eval17505$fn__17506.invoke(servlet.clj:153)
+	at qbits.jet.servlet$eval17418$fn__17419$G__17409__17428.invoke(servlet.clj:88)
+	at qbits.jet.servlet$set_response_body_BANG_.invoke(servlet.clj:93)
+	at qbits.jet.servlet$set_body_BANG_.invoke(servlet.clj:229)
+	at qbits.jet.servlet$eval17644$fn__17645.invoke(servlet.clj:263)
+	at qbits.jet.servlet$eval17615$fn__17616$G__17606__17623.invoke(servlet.clj:236)
+	at qbits.jet.servlet$update_response.invoke(servlet.clj:241)
+	at qbits.jet.server$make_handler$fn__17959.invoke(server.clj:72)
+	at qbits.jet.server.proxy$org.eclipse.jetty.server.handler.AbstractHandler$ff19274a.handle(Unknown Source)
+	at org.eclipse.jetty.server.handler.HandlerList.handle(HandlerList.java:52)
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:118)
+	at org.eclipse.jetty.server.Server.handle(Server.java:515)
+	at org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:291)
+	at org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:242)
+	at org.eclipse.jetty.io.AbstractConnection$ReadCallback.succeeded(AbstractConnection.java:238)
+	at org.eclipse.jetty.io.FillInterest.fillable(FillInterest.java:95)
+	at org.eclipse.jetty.io.SelectChannelEndPoint$2.run(SelectChannelEndPoint.java:57)
+	at org.eclipse.jetty.util.thread.strategy.ExecuteProduceConsume.produceAndRun(ExecuteProduceConsume.java:191)
+	at org.eclipse.jetty.util.thread.strategy.ExecuteProduceConsume.run(ExecuteProduceConsume.java:126)
+	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:654)
+	at org.eclipse.jetty.util.thread.QueuedThreadPool$3.run(QueuedThreadPool.java:572)
+	at java.lang.Thread.run(Thread.java:745)
+[2015-12-31 07:40:42,093][WARN][org.eclipse.jetty.server.HttpChannel] //localhost:3000/assets/bootstrap/css/bootstrap.min.css
+clojure.lang.ExceptionInfo: Couldnt' write to stream  {:exception #error {
+ :cause "Broken pipe"
+ :via
+ [{:type org.eclipse.jetty.io.EofException
+   :message nil
+   :at [org.eclipse.jetty.io.ChannelEndPoint flush "ChannelEndPoint.java" 200]}
+  {:type java.io.IOException
+   :message "Broken pipe"
+   :at [sun.nio.ch.FileDispatcherImpl write0 "FileDispatcherImpl.java" -2]}]
+ :trace
+ [[sun.nio.ch.FileDispatcherImpl write0 "FileDispatcherImpl.java" -2]
+  [sun.nio.ch.SocketDispatcher write "SocketDispatcher.java" 47]
+  [sun.nio.ch.IOUtil writeFromNativeBuffer "IOUtil.java" 93]
+  [sun.nio.ch.IOUtil write "IOUtil.java" 51]
+  [sun.nio.ch.SocketChannelImpl write "SocketChannelImpl.java" 471]
+  [org.eclipse.jetty.io.ChannelEndPoint flush "ChannelEndPoint.java" 178]
+  [org.eclipse.jetty.io.WriteFlusher flush "WriteFlusher.java" 408]
+  [org.eclipse.jetty.io.WriteFlusher write "WriteFlusher.java" 302]
+  [org.eclipse.jetty.io.AbstractEndPoint write "AbstractEndPoint.java" 135]
+  [org.eclipse.jetty.server.HttpConnection$SendCallback process "HttpConnection.java" 692]
+  [org.eclipse.jetty.util.IteratingCallback processing "IteratingCallback.java" 241]
+  [org.eclipse.jetty.util.IteratingCallback iterate "IteratingCallback.java" 224]
+  [org.eclipse.jetty.server.HttpConnection send "HttpConnection.java" 511]
+  [org.eclipse.jetty.server.HttpChannel sendResponse "HttpChannel.java" 601]
+  [org.eclipse.jetty.server.HttpChannel write "HttpChannel.java" 650]
+  [org.eclipse.jetty.server.HttpOutput write "HttpOutput.java" 172]
+  [org.eclipse.jetty.server.HttpOutput write "HttpOutput.java" 158]
+  [org.eclipse.jetty.server.HttpOutput write "HttpOutput.java" 408]
+  [clojure.java.io$fn__9219 invoke "io.clj" 297]
+  [clojure.lang.MultiFn invoke "MultiFn.java" 238]
+  [clojure.java.io$copy doInvoke "io.clj" 396]
+  [clojure.lang.RestFn invoke "RestFn.java" 425]
+  [qbits.jet.servlet$eval17482$fn__17483 invoke "servlet.clj" 124]
+  [qbits.jet.servlet$eval17451$fn__17452$G__17442__17459 invoke "servlet.clj" 104]
+  [qbits.jet.servlet$write_stream_BANG_ invoke "servlet.clj" 129]
+  [qbits.jet.servlet$eval17505$fn__17506 invoke "servlet.clj" 153]
+  [qbits.jet.servlet$eval17418$fn__17419$G__17409__17428 invoke "servlet.clj" 88]
+  [qbits.jet.servlet$set_response_body_BANG_ invoke "servlet.clj" 93]
+  [qbits.jet.servlet$set_body_BANG_ invoke "servlet.clj" 229]
+  [qbits.jet.servlet$eval17644$fn__17645 invoke "servlet.clj" 263]
+  [qbits.jet.servlet$eval17615$fn__17616$G__17606__17623 invoke "servlet.clj" 236]
+  [qbits.jet.servlet$update_response invoke "servlet.clj" 241]
+  [qbits.jet.server$make_handler$fn__17959 invoke "server.clj" 72]
+  [qbits.jet.server.proxy$org.eclipse.jetty.server.handler.AbstractHandler$ff19274a handle nil -1]
+  [org.eclipse.jetty.server.handler.HandlerList handle "HandlerList.java" 52]
+  [org.eclipse.jetty.server.handler.HandlerWrapper handle "HandlerWrapper.java" 118]
+  [org.eclipse.jetty.server.Server handle "Server.java" 515]
+  [org.eclipse.jetty.server.HttpChannel handle "HttpChannel.java" 291]
+  [org.eclipse.jetty.server.HttpConnection onFillable "HttpConnection.java" 242]
+  [org.eclipse.jetty.io.AbstractConnection$ReadCallback succeeded "AbstractConnection.java" 238]
+  [org.eclipse.jetty.io.FillInterest fillable "FillInterest.java" 95]
+  [org.eclipse.jetty.io.SelectChannelEndPoint$2 run "SelectChannelEndPoint.java" 57]
+  [org.eclipse.jetty.util.thread.strategy.ExecuteProduceConsume produceAndRun "ExecuteProduceConsume.java" 191]
+  [org.eclipse.jetty.util.thread.strategy.ExecuteProduceConsume run "ExecuteProduceConsume.java" 126]
+  [org.eclipse.jetty.util.thread.QueuedThreadPool runJob "QueuedThreadPool.java" 654]
+  [org.eclipse.jetty.util.thread.QueuedThreadPool$3 run "QueuedThreadPool.java" 572]
+  [java.lang.Thread run "Thread.java" 745]]}}
+	at clojure.core$ex_info.invoke(core.clj:4593)
+	at qbits.jet.servlet$write_stream_BANG_.invoke(servlet.clj:131)
+	at qbits.jet.servlet$eval17505$fn__17506.invoke(servlet.clj:153)
+	at qbits.jet.servlet$eval17418$fn__17419$G__17409__17428.invoke(servlet.clj:88)
+	at qbits.jet.servlet$set_response_body_BANG_.invoke(servlet.clj:93)
+	at qbits.jet.servlet$set_body_BANG_.invoke(servlet.clj:229)
+	at qbits.jet.servlet$eval17644$fn__17645.invoke(servlet.clj:263)
+	at qbits.jet.servlet$eval17615$fn__17616$G__17606__17623.invoke(servlet.clj:236)
+	at qbits.jet.servlet$update_response.invoke(servlet.clj:241)
+	at qbits.jet.server$make_handler$fn__17959.invoke(server.clj:72)
+	at qbits.jet.server.proxy$org.eclipse.jetty.server.handler.AbstractHandler$ff19274a.handle(Unknown Source)
+	at org.eclipse.jetty.server.handler.HandlerList.handle(HandlerList.java:52)
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:118)
+	at org.eclipse.jetty.server.Server.handle(Server.java:515)
+	at org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:291)
+	at org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:242)
+	at org.eclipse.jetty.io.AbstractConnection$ReadCallback.succeeded(AbstractConnection.java:238)
+	at org.eclipse.jetty.io.FillInterest.fillable(FillInterest.java:95)
+	at org.eclipse.jetty.io.SelectChannelEndPoint$2.run(SelectChannelEndPoint.java:57)
+	at org.eclipse.jetty.util.thread.strategy.ExecuteProduceConsume.produceAndRun(ExecuteProduceConsume.java:191)
+	at org.eclipse.jetty.util.thread.strategy.ExecuteProduceConsume.run(ExecuteProduceConsume.java:126)
+	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:654)
+	at org.eclipse.jetty.util.thread.QueuedThreadPool$3.run(QueuedThreadPool.java:572)
+	at java.lang.Thread.run(Thread.java:745)
+[2015-12-31 07:40:42,090][WARN][org.eclipse.jetty.server.HttpChannel] //localhost:3000/css/screen.css
+clojure.lang.ExceptionInfo: Couldnt' write to stream  {:exception #error {
+ :cause "Broken pipe"
+ :via
+ [{:type org.eclipse.jetty.io.EofException
+   :message nil
+   :at [org.eclipse.jetty.io.ChannelEndPoint flush "ChannelEndPoint.java" 200]}
+  {:type java.io.IOException
+   :message "Broken pipe"
+   :at [sun.nio.ch.FileDispatcherImpl write0 "FileDispatcherImpl.java" -2]}]
+ :trace
+ [[sun.nio.ch.FileDispatcherImpl write0 "FileDispatcherImpl.java" -2]
+  [sun.nio.ch.SocketDispatcher write "SocketDispatcher.java" 47]
+  [sun.nio.ch.IOUtil writeFromNativeBuffer "IOUtil.java" 93]
+  [sun.nio.ch.IOUtil write "IOUtil.java" 65]
+  [sun.nio.ch.SocketChannelImpl write "SocketChannelImpl.java" 471]
+  [org.eclipse.jetty.io.ChannelEndPoint flush "ChannelEndPoint.java" 178]
+  [org.eclipse.jetty.io.WriteFlusher flush "WriteFlusher.java" 408]
+  [org.eclipse.jetty.io.WriteFlusher write "WriteFlusher.java" 302]
+  [org.eclipse.jetty.io.AbstractEndPoint write "AbstractEndPoint.java" 135]
+  [org.eclipse.jetty.server.HttpConnection$SendCallback process "HttpConnection.java" 692]
+  [org.eclipse.jetty.util.IteratingCallback processing "IteratingCallback.java" 241]
+  [org.eclipse.jetty.util.IteratingCallback iterate "IteratingCallback.java" 224]
+  [org.eclipse.jetty.server.HttpConnection send "HttpConnection.java" 511]
+  [org.eclipse.jetty.server.HttpChannel sendResponse "HttpChannel.java" 601]
+  [org.eclipse.jetty.server.HttpChannel write "HttpChannel.java" 650]
+  [org.eclipse.jetty.server.HttpOutput write "HttpOutput.java" 172]
+  [org.eclipse.jetty.server.HttpOutput write "HttpOutput.java" 158]
+  [org.eclipse.jetty.server.HttpOutput write "HttpOutput.java" 436]
+  [clojure.java.io$fn__9219 invoke "io.clj" 297]
+  [clojure.lang.MultiFn invoke "MultiFn.java" 238]
+  [clojure.java.io$copy doInvoke "io.clj" 396]
+  [clojure.lang.RestFn invoke "RestFn.java" 425]
+  [qbits.jet.servlet$eval17482$fn__17483 invoke "servlet.clj" 124]
+  [qbits.jet.servlet$eval17451$fn__17452$G__17442__17459 invoke "servlet.clj" 104]
+  [qbits.jet.servlet$write_stream_BANG_ invoke "servlet.clj" 129]
+  [qbits.jet.servlet$eval17505$fn__17506 invoke "servlet.clj" 153]
+  [qbits.jet.servlet$eval17418$fn__17419$G__17409__17428 invoke "servlet.clj" 88]
+  [qbits.jet.servlet$eval17513$fn__17514 invoke "servlet.clj" 162]
+  [qbits.jet.servlet$eval17418$fn__17419$G__17409__17428 invoke "servlet.clj" 88]
+  [qbits.jet.servlet$set_response_body_BANG_ invoke "servlet.clj" 93]
+  [qbits.jet.servlet$set_body_BANG_ invoke "servlet.clj" 229]
+  [qbits.jet.servlet$eval17644$fn__17645 invoke "servlet.clj" 263]
+  [qbits.jet.servlet$eval17615$fn__17616$G__17606__17623 invoke "servlet.clj" 236]
+  [qbits.jet.servlet$update_response invoke "servlet.clj" 241]
+  [qbits.jet.server$make_handler$fn__17959 invoke "server.clj" 72]
+  [qbits.jet.server.proxy$org.eclipse.jetty.server.handler.AbstractHandler$ff19274a handle nil -1]
+  [org.eclipse.jetty.server.handler.HandlerList handle "HandlerList.java" 52]
+  [org.eclipse.jetty.server.handler.HandlerWrapper handle "HandlerWrapper.java" 118]
+  [org.eclipse.jetty.server.Server handle "Server.java" 515]
+  [org.eclipse.jetty.server.HttpChannel handle "HttpChannel.java" 291]
+  [org.eclipse.jetty.server.HttpConnection onFillable "HttpConnection.java" 242]
+  [org.eclipse.jetty.io.AbstractConnection$ReadCallback succeeded "AbstractConnection.java" 238]
+  [org.eclipse.jetty.io.FillInterest fillable "FillInterest.java" 95]
+  [org.eclipse.jetty.io.SelectChannelEndPoint$2 run "SelectChannelEndPoint.java" 57]
+  [org.eclipse.jetty.util.thread.strategy.ExecuteProduceConsume produceAndRun "ExecuteProduceConsume.java" 191]
+  [org.eclipse.jetty.util.thread.strategy.ExecuteProduceConsume run "ExecuteProduceConsume.java" 126]
+  [org.eclipse.jetty.util.thread.QueuedThreadPool runJob "QueuedThreadPool.java" 654]
+  [org.eclipse.jetty.util.thread.QueuedThreadPool$3 run "QueuedThreadPool.java" 572]
+  [java.lang.Thread run "Thread.java" 745]]}}
+	at clojure.core$ex_info.invoke(core.clj:4593)
+	at qbits.jet.servlet$write_stream_BANG_.invoke(servlet.clj:131)
+	at qbits.jet.servlet$eval17505$fn__17506.invoke(servlet.clj:153)
+	at qbits.jet.servlet$eval17418$fn__17419$G__17409__17428.invoke(servlet.clj:88)
+	at qbits.jet.servlet$eval17513$fn__17514.invoke(servlet.clj:162)
+	at qbits.jet.servlet$eval17418$fn__17419$G__17409__17428.invoke(servlet.clj:88)
+	at qbits.jet.servlet$set_response_body_BANG_.invoke(servlet.clj:93)
+	at qbits.jet.servlet$set_body_BANG_.invoke(servlet.clj:229)
+	at qbits.jet.servlet$eval17644$fn__17645.invoke(servlet.clj:263)
+	at qbits.jet.servlet$eval17615$fn__17616$G__17606__17623.invoke(servlet.clj:236)
+	at qbits.jet.servlet$update_response.invoke(servlet.clj:241)
+	at qbits.jet.server$make_handler$fn__17959.invoke(server.clj:72)
+	at qbits.jet.server.proxy$org.eclipse.jetty.server.handler.AbstractHandler$ff19274a.handle(Unknown Source)
+	at org.eclipse.jetty.server.handler.HandlerList.handle(HandlerList.java:52)
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:118)
+	at org.eclipse.jetty.server.Server.handle(Server.java:515)
+	at org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:291)
+	at org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:242)
+	at org.eclipse.jetty.io.AbstractConnection$ReadCallback.succeeded(AbstractConnection.java:238)
+	at org.eclipse.jetty.io.FillInterest.fillable(FillInterest.java:95)
+	at org.eclipse.jetty.io.SelectChannelEndPoint$2.run(SelectChannelEndPoint.java:57)
+	at org.eclipse.jetty.util.thread.strategy.ExecuteProduceConsume.produceAndRun(ExecuteProduceConsume.java:191)
+	at org.eclipse.jetty.util.thread.strategy.ExecuteProduceConsume.run(ExecuteProduceConsume.java:126)
+	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:654)
+	at org.eclipse.jetty.util.thread.QueuedThreadPool$3.run(QueuedThreadPool.java:572)
+	at java.lang.Thread.run(Thread.java:745)
+[2015-12-31 07:40:42,140][WARN][org.eclipse.jetty.server.HttpChannel] Could not send response error 500: clojure.lang.ExceptionInfo: Couldnt' write to stream  {:exception #error {
+ :cause "Broken pipe"
+ :via
+ [{:type org.eclipse.jetty.io.EofException
+   :message nil
+   :at [org.eclipse.jetty.io.ChannelEndPoint flush "ChannelEndPoint.java" 200]}
+  {:type java.io.IOException
+   :message "Broken pipe"
+   :at [sun.nio.ch.FileDispatcherImpl write0 "FileDispatcherImpl.java" -2]}]
+ :trace
+ [[sun.nio.ch.FileDispatcherImpl write0 "FileDispatcherImpl.java" -2]
+  [sun.nio.ch.SocketDispatcher write "SocketDispatcher.java" 47]
+  [sun.nio.ch.IOUtil writeFromNativeBuffer "IOUtil.java" 93]
+  [sun.nio.ch.IOUtil write "IOUtil.java" 65]
+  [sun.nio.ch.SocketChannelImpl write "SocketChannelImpl.java" 471]
+  [org.eclipse.jetty.io.ChannelEndPoint flush "ChannelEndPoint.java" 178]
+  [org.eclipse.jetty.io.WriteFlusher flush "WriteFlusher.java" 408]
+  [org.eclipse.jetty.io.WriteFlusher write "WriteFlusher.java" 302]
+  [org.eclipse.jetty.io.AbstractEndPoint write "AbstractEndPoint.java" 135]
+  [org.eclipse.jetty.server.HttpConnection$SendCallback process "HttpConnection.java" 692]
+  [org.eclipse.jetty.util.IteratingCallback processing "IteratingCallback.java" 241]
+  [org.eclipse.jetty.util.IteratingCallback iterate "IteratingCallback.java" 224]
+  [org.eclipse.jetty.server.HttpConnection send "HttpConnection.java" 511]
+  [org.eclipse.jetty.server.HttpChannel sendResponse "HttpChannel.java" 601]
+  [org.eclipse.jetty.server.HttpChannel write "HttpChannel.java" 650]
+  [org.eclipse.jetty.server.HttpOutput write "HttpOutput.java" 172]
+  [org.eclipse.jetty.server.HttpOutput write "HttpOutput.java" 158]
+  [org.eclipse.jetty.server.HttpOutput write "HttpOutput.java" 436]
+  [clojure.java.io$fn__9219 invoke "io.clj" 297]
+  [clojure.lang.MultiFn invoke "MultiFn.java" 238]
+  [clojure.java.io$copy doInvoke "io.clj" 396]
+  [clojure.lang.RestFn invoke "RestFn.java" 425]
+  [qbits.jet.servlet$eval17482$fn__17483 invoke "servlet.clj" 124]
+  [qbits.jet.servlet$eval17451$fn__17452$G__17442__17459 invoke "servlet.clj" 104]
+  [qbits.jet.servlet$write_stream_BANG_ invoke "servlet.clj" 129]
+  [qbits.jet.servlet$eval17505$fn__17506 invoke "servlet.clj" 153]
+  [qbits.jet.servlet$eval17418$fn__17419$G__17409__17428 invoke "servlet.clj" 88]
+  [qbits.jet.servlet$eval17513$fn__17514 invoke "servlet.clj" 162]
+  [qbits.jet.servlet$eval17418$fn__17419$G__17409__17428 invoke "servlet.clj" 88]
+  [qbits.jet.servlet$set_response_body_BANG_ invoke "servlet.clj" 93]
+  [qbits.jet.servlet$set_body_BANG_ invoke "servlet.clj" 229]
+  [qbits.jet.servlet$eval17644$fn__17645 invoke "servlet.clj" 263]
+  [qbits.jet.servlet$eval17615$fn__17616$G__17606__17623 invoke "servlet.clj" 236]
+  [qbits.jet.servlet$update_response invoke "servlet.clj" 241]
+  [qbits.jet.server$make_handler$fn__17959 invoke "server.clj" 72]
+  [qbits.jet.server.proxy$org.eclipse.jetty.server.handler.AbstractHandler$ff19274a handle nil -1]
+  [org.eclipse.jetty.server.handler.HandlerList handle "HandlerList.java" 52]
+  [org.eclipse.jetty.server.handler.HandlerWrapper handle "HandlerWrapper.java" 118]
+  [org.eclipse.jetty.server.Server handle "Server.java" 515]
+  [org.eclipse.jetty.server.HttpChannel handle "HttpChannel.java" 291]
+  [org.eclipse.jetty.server.HttpConnection onFillable "HttpConnection.java" 242]
+  [org.eclipse.jetty.io.AbstractConnection$ReadCallback succeeded "AbstractConnection.java" 238]
+  [org.eclipse.jetty.io.FillInterest fillable "FillInterest.java" 95]
+  [org.eclipse.jetty.io.SelectChannelEndPoint$2 run "SelectChannelEndPoint.java" 57]
+  [org.eclipse.jetty.util.thread.strategy.ExecuteProduceConsume produceAndRun "ExecuteProduceConsume.java" 191]
+  [org.eclipse.jetty.util.thread.strategy.ExecuteProduceConsume run "ExecuteProduceConsume.java" 126]
+  [org.eclipse.jetty.util.thread.QueuedThreadPool runJob "QueuedThreadPool.java" 654]
+  [org.eclipse.jetty.util.thread.QueuedThreadPool$3 run "QueuedThreadPool.java" 572]
+  [java.lang.Thread run "Thread.java" 745]]}}
+[2015-12-31 07:40:42,137][WARN][org.eclipse.jetty.server.HttpChannel] Could not send response error 500: clojure.lang.ExceptionInfo: Couldnt' write to stream  {:exception #error {
+ :cause "Broken pipe"
+ :via
+ [{:type org.eclipse.jetty.io.EofException
+   :message nil
+   :at [org.eclipse.jetty.io.ChannelEndPoint flush "ChannelEndPoint.java" 200]}
+  {:type java.io.IOException
+   :message "Broken pipe"
+   :at [sun.nio.ch.FileDispatcherImpl write0 "FileDispatcherImpl.java" -2]}]
+ :trace
+ [[sun.nio.ch.FileDispatcherImpl write0 "FileDispatcherImpl.java" -2]
+  [sun.nio.ch.SocketDispatcher write "SocketDispatcher.java" 47]
+  [sun.nio.ch.IOUtil writeFromNativeBuffer "IOUtil.java" 93]
+  [sun.nio.ch.IOUtil write "IOUtil.java" 51]
+  [sun.nio.ch.SocketChannelImpl write "SocketChannelImpl.java" 471]
+  [org.eclipse.jetty.io.ChannelEndPoint flush "ChannelEndPoint.java" 178]
+  [org.eclipse.jetty.io.WriteFlusher flush "WriteFlusher.java" 408]
+  [org.eclipse.jetty.io.WriteFlusher write "WriteFlusher.java" 302]
+  [org.eclipse.jetty.io.AbstractEndPoint write "AbstractEndPoint.java" 135]
+  [org.eclipse.jetty.server.HttpConnection$SendCallback process "HttpConnection.java" 692]
+  [org.eclipse.jetty.util.IteratingCallback processing "IteratingCallback.java" 241]
+  [org.eclipse.jetty.util.IteratingCallback iterate "IteratingCallback.java" 224]
+  [org.eclipse.jetty.server.HttpConnection send "HttpConnection.java" 511]
+  [org.eclipse.jetty.server.HttpChannel sendResponse "HttpChannel.java" 601]
+  [org.eclipse.jetty.server.HttpChannel write "HttpChannel.java" 650]
+  [org.eclipse.jetty.server.HttpOutput write "HttpOutput.java" 172]
+  [org.eclipse.jetty.server.HttpOutput write "HttpOutput.java" 158]
+  [org.eclipse.jetty.server.HttpOutput write "HttpOutput.java" 408]
+  [clojure.java.io$fn__9219 invoke "io.clj" 297]
+  [clojure.lang.MultiFn invoke "MultiFn.java" 238]
+  [clojure.java.io$copy doInvoke "io.clj" 396]
+  [clojure.lang.RestFn invoke "RestFn.java" 425]
+  [qbits.jet.servlet$eval17482$fn__17483 invoke "servlet.clj" 124]
+  [qbits.jet.servlet$eval17451$fn__17452$G__17442__17459 invoke "servlet.clj" 104]
+  [qbits.jet.servlet$write_stream_BANG_ invoke "servlet.clj" 129]
+  [qbits.jet.servlet$eval17505$fn__17506 invoke "servlet.clj" 153]
+  [qbits.jet.servlet$eval17418$fn__17419$G__17409__17428 invoke "servlet.clj" 88]
+  [qbits.jet.servlet$set_response_body_BANG_ invoke "servlet.clj" 93]
+  [qbits.jet.servlet$set_body_BANG_ invoke "servlet.clj" 229]
+  [qbits.jet.servlet$eval17644$fn__17645 invoke "servlet.clj" 263]
+  [qbits.jet.servlet$eval17615$fn__17616$G__17606__17623 invoke "servlet.clj" 236]
+  [qbits.jet.servlet$update_response invoke "servlet.clj" 241]
+  [qbits.jet.server$make_handler$fn__17959 invoke "server.clj" 72]
+  [qbits.jet.server.proxy$org.eclipse.jetty.server.handler.AbstractHandler$ff19274a handle nil -1]
+  [org.eclipse.jetty.server.handler.HandlerList handle "HandlerList.java" 52]
+  [org.eclipse.jetty.server.handler.HandlerWrapper handle "HandlerWrapper.java" 118]
+  [org.eclipse.jetty.server.Server handle "Server.java" 515]
+  [org.eclipse.jetty.server.HttpChannel handle "HttpChannel.java" 291]
+  [org.eclipse.jetty.server.HttpConnection onFillable "HttpConnection.java" 242]
+  [org.eclipse.jetty.io.AbstractConnection$ReadCallback succeeded "AbstractConnection.java" 238]
+  [org.eclipse.jetty.io.FillInterest fillable "FillInterest.java" 95]
+  [org.eclipse.jetty.io.SelectChannelEndPoint$2 run "SelectChannelEndPoint.java" 57]
+  [org.eclipse.jetty.util.thread.strategy.ExecuteProduceConsume produceAndRun "ExecuteProduceConsume.java" 191]
+  [org.eclipse.jetty.util.thread.strategy.ExecuteProduceConsume run "ExecuteProduceConsume.java" 126]
+  [org.eclipse.jetty.util.thread.QueuedThreadPool runJob "QueuedThreadPool.java" 654]
+  [org.eclipse.jetty.util.thread.QueuedThreadPool$3 run "QueuedThreadPool.java" 572]
+  [java.lang.Thread run "Thread.java" 745]]}}
+[2015-12-31 07:40:42,142][WARN][org.eclipse.jetty.server.HttpChannel] Could not send response error 500: clojure.lang.ExceptionInfo: Couldnt' write to stream  {:exception #error {
+ :cause "Broken pipe"
+ :via
+ [{:type org.eclipse.jetty.io.EofException
+   :message nil
+   :at [org.eclipse.jetty.io.ChannelEndPoint flush "ChannelEndPoint.java" 200]}
+  {:type java.io.IOException
+   :message "Broken pipe"
+   :at [sun.nio.ch.FileDispatcherImpl write0 "FileDispatcherImpl.java" -2]}]
+ :trace
+ [[sun.nio.ch.FileDispatcherImpl write0 "FileDispatcherImpl.java" -2]
+  [sun.nio.ch.SocketDispatcher write "SocketDispatcher.java" 47]
+  [sun.nio.ch.IOUtil writeFromNativeBuffer "IOUtil.java" 93]
+  [sun.nio.ch.IOUtil write "IOUtil.java" 65]
+  [sun.nio.ch.SocketChannelImpl write "SocketChannelImpl.java" 471]
+  [org.eclipse.jetty.io.ChannelEndPoint flush "ChannelEndPoint.java" 178]
+  [org.eclipse.jetty.io.WriteFlusher flush "WriteFlusher.java" 408]
+  [org.eclipse.jetty.io.WriteFlusher write "WriteFlusher.java" 302]
+  [org.eclipse.jetty.io.AbstractEndPoint write "AbstractEndPoint.java" 135]
+  [org.eclipse.jetty.server.HttpConnection$SendCallback process "HttpConnection.java" 692]
+  [org.eclipse.jetty.util.IteratingCallback processing "IteratingCallback.java" 241]
+  [org.eclipse.jetty.util.IteratingCallback iterate "IteratingCallback.java" 224]
+  [org.eclipse.jetty.server.HttpConnection send "HttpConnection.java" 511]
+  [org.eclipse.jetty.server.HttpChannel sendResponse "HttpChannel.java" 601]
+  [org.eclipse.jetty.server.HttpChannel write "HttpChannel.java" 650]
+  [org.eclipse.jetty.server.HttpOutput write "HttpOutput.java" 172]
+  [org.eclipse.jetty.server.HttpOutput write "HttpOutput.java" 158]
+  [org.eclipse.jetty.server.HttpOutput write "HttpOutput.java" 436]
+  [clojure.java.io$fn__9219 invoke "io.clj" 297]
+  [clojure.lang.MultiFn invoke "MultiFn.java" 238]
+  [clojure.java.io$copy doInvoke "io.clj" 396]
+  [clojure.lang.RestFn invoke "RestFn.java" 425]
+  [qbits.jet.servlet$eval17482$fn__17483 invoke "servlet.clj" 124]
+  [qbits.jet.servlet$eval17451$fn__17452$G__17442__17459 invoke "servlet.clj" 104]
+  [qbits.jet.servlet$write_stream_BANG_ invoke "servlet.clj" 129]
+  [qbits.jet.servlet$eval17505$fn__17506 invoke "servlet.clj" 153]
+  [qbits.jet.servlet$eval17418$fn__17419$G__17409__17428 invoke "servlet.clj" 88]
+  [qbits.jet.servlet$set_response_body_BANG_ invoke "servlet.clj" 93]
+  [qbits.jet.servlet$set_body_BANG_ invoke "servlet.clj" 229]
+  [qbits.jet.servlet$eval17644$fn__17645 invoke "servlet.clj" 263]
+  [qbits.jet.servlet$eval17615$fn__17616$G__17606__17623 invoke "servlet.clj" 236]
+  [qbits.jet.servlet$update_response invoke "servlet.clj" 241]
+  [qbits.jet.server$make_handler$fn__17959 invoke "server.clj" 72]
+  [qbits.jet.server.proxy$org.eclipse.jetty.server.handler.AbstractHandler$ff19274a handle nil -1]
+  [org.eclipse.jetty.server.handler.HandlerList handle "HandlerList.java" 52]
+  [org.eclipse.jetty.server.handler.HandlerWrapper handle "HandlerWrapper.java" 118]
+  [org.eclipse.jetty.server.Server handle "Server.java" 515]
+  [org.eclipse.jetty.server.HttpChannel handle "HttpChannel.java" 291]
+  [org.eclipse.jetty.server.HttpConnection onFillable "HttpConnection.java" 242]
+  [org.eclipse.jetty.io.AbstractConnection$ReadCallback succeeded "AbstractConnection.java" 238]
+  [org.eclipse.jetty.io.FillInterest fillable "FillInterest.java" 95]
+  [org.eclipse.jetty.io.SelectChannelEndPoint$2 run "SelectChannelEndPoint.java" 57]
+  [org.eclipse.jetty.util.thread.strategy.ExecuteProduceConsume produceAndRun "ExecuteProduceConsume.java" 191]
+  [org.eclipse.jetty.util.thread.strategy.ExecuteProduceConsume run "ExecuteProduceConsume.java" 126]
+  [org.eclipse.jetty.util.thread.QueuedThreadPool runJob "QueuedThreadPool.java" 654]
+  [org.eclipse.jetty.util.thread.QueuedThreadPool$3 run "QueuedThreadPool.java" 572]
+  [java.lang.Thread run "Thread.java" 745]]}}
+[2015-12-31 07:45:32,042][INFO][com.zaxxer.hikari.pool.HikariPool] HikariPool-0 - is closing down.
+[2015-12-31 07:45:40,357][INFO][com.zaxxer.hikari.HikariDataSource] HikariPool-1 - is starting.
+[2015-12-31 07:45:56,592][INFO][ecoacao.config] 
+-=[ecoacao started successfully using the development profile]=-
+[2015-12-31 07:45:56,593][INFO][org.eclipse.jetty.server.Server] jetty-9.3.0.v20150612
+[2015-12-31 07:51:02,514][INFO][ecoacao.handler] ecoacao is shutting down...
+[2015-12-31 07:51:02,519][INFO][com.zaxxer.hikari.pool.HikariPool] HikariPool-1 - is closing down.
+[2015-12-31 07:51:02,521][INFO][ecoacao.handler] #'ecoacao.db.core/*db* stopped
+[2015-12-31 07:51:02,521][INFO][ecoacao.handler] shutdown complete!
+[2015-12-31 07:51:02,527][INFO][org.eclipse.jetty.server.ServerConnector] Stopped ServerConnector@690222f{HTTP/1.1,[http/1.1]}{0.0.0.0:3000}
+[2015-12-31 07:51:04,554][INFO][com.zaxxer.hikari.HikariDataSource] HikariPool-2 - is starting.
+[2015-12-31 07:51:04,569][INFO][ecoacao.handler] #'ecoacao.db.core/*db* started
+[2015-12-31 07:51:04,569][INFO][ecoacao.config] 
+-=[ecoacao started successfully using the development profile]=-
+[2015-12-31 07:51:04,570][INFO][org.eclipse.jetty.server.Server] jetty-9.3.0.v20150612
+[2015-12-31 07:51:04,572][INFO][org.eclipse.jetty.server.ServerConnector] Started ServerConnector@27fd7bc8{HTTP/1.1,[http/1.1]}{0.0.0.0:3000}
+[2015-12-31 07:51:04,573][INFO][org.eclipse.jetty.server.Server] Started @940162ms
+[2015-12-31 07:52:24,805][INFO][ecoacao.handler] ecoacao is shutting down...
+[2015-12-31 07:52:24,806][INFO][com.zaxxer.hikari.pool.HikariPool] HikariPool-2 - is closing down.
+[2015-12-31 07:52:24,807][INFO][ecoacao.handler] #'ecoacao.db.core/*db* stopped
+[2015-12-31 07:52:24,807][INFO][ecoacao.handler] shutdown complete!
+[2015-12-31 07:52:24,808][INFO][org.eclipse.jetty.server.ServerConnector] Stopped ServerConnector@27fd7bc8{HTTP/1.1,[http/1.1]}{0.0.0.0:3000}
+[2015-12-31 07:54:21,090][INFO][com.zaxxer.hikari.HikariDataSource] HikariPool-3 - is starting.
+[2015-12-31 07:54:21,105][INFO][ecoacao.handler] #'ecoacao.db.core/*db* started
+[2015-12-31 07:54:21,106][INFO][ecoacao.config] 
+-=[ecoacao started successfully using the development profile]=-
+[2015-12-31 07:54:21,106][INFO][org.eclipse.jetty.server.Server] jetty-9.3.0.v20150612
+[2015-12-31 07:54:21,108][INFO][org.eclipse.jetty.server.ServerConnector] Started ServerConnector@5e7d5760{HTTP/1.1,[http/1.1]}{0.0.0.0:3000}
+[2015-12-31 07:54:21,109][INFO][org.eclipse.jetty.server.Server] Started @1136690ms
+[2015-12-31 07:54:33,305][INFO][ecoacao.handler] ecoacao is shutting down...
+[2015-12-31 07:54:33,306][INFO][com.zaxxer.hikari.pool.HikariPool] HikariPool-3 - is closing down.
+[2015-12-31 07:54:33,307][INFO][ecoacao.handler] #'ecoacao.db.core/*db* stopped
+[2015-12-31 07:54:33,307][INFO][ecoacao.handler] shutdown complete!
+[2015-12-31 07:54:33,308][INFO][org.eclipse.jetty.server.ServerConnector] Stopped ServerConnector@5e7d5760{HTTP/1.1,[http/1.1]}{0.0.0.0:3000}
+[2015-12-31 07:55:04,352][INFO][org.eclipse.jetty.util.log] Logging initialized @15239ms
+[2015-12-31 07:55:05,374][INFO][ecoacao.core] nREPL server started on port 7000
+[2015-12-31 07:55:05,374][INFO][ecoacao.core] server is starting on port  3000
+[2015-12-31 07:55:05,378][INFO][com.zaxxer.hikari.HikariDataSource] HikariPool-0 - is starting.
+[2015-12-31 07:55:05,579][INFO][ecoacao.handler] #'ecoacao.db.core/*db* started
+[2015-12-31 07:55:05,579][INFO][ecoacao.config] 
+-=[ecoacao started successfully using the development profile]=-
+[2015-12-31 07:55:05,603][INFO][org.eclipse.jetty.server.Server] jetty-9.3.0.v20150612
+[2015-12-31 07:55:05,669][INFO][org.eclipse.jetty.server.ServerConnector] Started ServerConnector@49123175{HTTP/1.1,[http/1.1]}{0.0.0.0:3000}
+[2015-12-31 07:55:05,670][INFO][org.eclipse.jetty.server.Server] Started @16559ms
+[2015-12-31 07:56:16,981][INFO][ecoacao.handler] ecoacao is shutting down...
+[2015-12-31 07:56:16,984][INFO][com.zaxxer.hikari.pool.HikariPool] HikariPool-0 - is closing down.
+[2015-12-31 07:56:16,987][INFO][ecoacao.handler] #'ecoacao.db.core/*db* stopped
+[2015-12-31 07:56:16,987][INFO][ecoacao.handler] shutdown complete!
+[2015-12-31 07:56:16,992][INFO][org.eclipse.jetty.server.ServerConnector] Stopped ServerConnector@49123175{HTTP/1.1,[http/1.1]}{0.0.0.0:3000}
+[2015-12-31 07:58:17,490][INFO][com.zaxxer.hikari.HikariDataSource] HikariPool-4 - is starting.
+[2015-12-31 07:58:17,535][INFO][ecoacao.handler] #'ecoacao.db.core/*db* started
+[2015-12-31 07:58:17,535][INFO][ecoacao.config] 
+-=[ecoacao started successfully using the development profile]=-
+[2015-12-31 07:58:17,537][INFO][org.eclipse.jetty.server.Server] jetty-9.3.0.v20150612
+[2015-12-31 07:58:17,540][INFO][org.eclipse.jetty.server.ServerConnector] Started ServerConnector@2052b45d{HTTP/1.1,[http/1.1]}{0.0.0.0:3000}
+[2015-12-31 07:58:17,547][INFO][org.eclipse.jetty.server.Server] Started @1373119ms
+[2015-12-31 08:06:23,103][INFO][ecoacao.handler] ecoacao is shutting down...
+[2015-12-31 08:06:23,106][INFO][com.zaxxer.hikari.pool.HikariPool] HikariPool-4 - is closing down.
+[2015-12-31 08:06:23,109][INFO][ecoacao.handler] #'ecoacao.db.core/*db* stopped
+[2015-12-31 08:06:23,109][INFO][ecoacao.handler] shutdown complete!
+[2015-12-31 08:06:23,110][INFO][org.eclipse.jetty.server.ServerConnector] Stopped ServerConnector@2052b45d{HTTP/1.1,[http/1.1]}{0.0.0.0:3000}
+[2015-12-31 08:07:10,123][INFO][org.eclipse.jetty.util.log] Logging initialized @19258ms
+[2015-12-31 08:07:11,185][INFO][ecoacao.core] nREPL server started on port 7000
+[2015-12-31 08:07:11,186][INFO][ecoacao.core] server is starting on port  3000
+[2015-12-31 08:07:11,196][INFO][com.zaxxer.hikari.HikariDataSource] HikariPool-0 - is starting.
+[2015-12-31 08:07:11,398][INFO][ecoacao.handler] #'ecoacao.db.core/*db* started
+[2015-12-31 08:07:11,399][INFO][ecoacao.config] 
+-=[ecoacao started successfully using the development profile]=-
+[2015-12-31 08:07:11,417][INFO][org.eclipse.jetty.server.Server] jetty-9.3.0.v20150612
+[2015-12-31 08:07:11,456][INFO][org.eclipse.jetty.server.ServerConnector] Started ServerConnector@572b64c{HTTP/1.1,[http/1.1]}{0.0.0.0:3000}
+[2015-12-31 08:07:11,457][INFO][org.eclipse.jetty.server.Server] Started @20594ms
+[2015-12-31 08:13:25,286][INFO][ecoacao.handler] ecoacao is shutting down...
+[2015-12-31 08:13:25,294][INFO][com.zaxxer.hikari.pool.HikariPool] HikariPool-0 - is closing down.
+[2015-12-31 08:13:25,300][INFO][ecoacao.handler] #'ecoacao.db.core/*db* stopped
+[2015-12-31 08:13:25,300][INFO][ecoacao.handler] shutdown complete!
+[2015-12-31 08:13:25,312][INFO][org.eclipse.jetty.server.ServerConnector] Stopped ServerConnector@572b64c{HTTP/1.1,[http/1.1]}{0.0.0.0:3000}
+[2015-12-31 08:14:12,818][INFO][org.eclipse.jetty.util.log] Logging initialized @20268ms
+[2015-12-31 08:15:04,091][INFO][com.zaxxer.hikari.HikariDataSource] HikariPool-0 - is starting.
+[2015-12-31 08:15:04,286][INFO][ecoacao.handler] #'ecoacao.db.core/*db* started
+[2015-12-31 08:15:04,287][INFO][ecoacao.config] 
+-=[ecoacao started successfully using the development profile]=-
+[2015-12-31 08:15:04,314][INFO][org.eclipse.jetty.server.Server] jetty-9.3.0.v20150612
+[2015-12-31 08:15:04,342][INFO][org.eclipse.jetty.server.ServerConnector] Started ServerConnector@1ea6ad90{HTTP/1.1,[http/1.1]}{0.0.0.0:3000}
+[2015-12-31 08:15:04,343][INFO][org.eclipse.jetty.server.Server] Started @71795ms
+[2015-12-31 08:27:41,094][INFO][ecoacao.handler] ecoacao is shutting down...
+[2015-12-31 08:27:41,098][INFO][com.zaxxer.hikari.pool.HikariPool] HikariPool-0 - is closing down.
+[2015-12-31 08:27:41,110][INFO][ecoacao.handler] #'ecoacao.db.core/*db* stopped
+[2015-12-31 08:27:41,110][INFO][ecoacao.handler] shutdown complete!
+[2015-12-31 08:27:41,119][INFO][org.eclipse.jetty.server.ServerConnector] Stopped ServerConnector@1ea6ad90{HTTP/1.1,[http/1.1]}{0.0.0.0:3000}
+[2015-12-31 08:28:17,669][INFO][org.eclipse.jetty.util.log] Logging initialized @19495ms
+[2015-12-31 08:28:18,778][INFO][ecoacao.core] nREPL server started on port 7000
+[2015-12-31 08:28:18,778][INFO][ecoacao.core] server is starting on port  3000
+[2015-12-31 08:28:18,783][INFO][com.zaxxer.hikari.HikariDataSource] HikariPool-0 - is starting.
+[2015-12-31 08:28:19,015][INFO][ecoacao.handler] #'ecoacao.db.core/*db* started
+[2015-12-31 08:28:19,016][INFO][ecoacao.config] 
+-=[ecoacao started successfully using the development profile]=-
+[2015-12-31 08:28:19,035][INFO][org.eclipse.jetty.server.Server] jetty-9.3.0.v20150612
+[2015-12-31 08:28:19,091][INFO][org.eclipse.jetty.server.ServerConnector] Started ServerConnector@506e6069{HTTP/1.1,[http/1.1]}{0.0.0.0:3000}
+[2015-12-31 08:28:19,094][INFO][org.eclipse.jetty.server.Server] Started @20923ms
+[2015-12-31 08:38:44,121][INFO][ecoacao.handler] ecoacao is shutting down...
+[2015-12-31 08:38:44,125][INFO][com.zaxxer.hikari.pool.HikariPool] HikariPool-0 - is closing down.
+[2015-12-31 08:38:44,129][INFO][ecoacao.handler] #'ecoacao.db.core/*db* stopped
+[2015-12-31 08:38:44,129][INFO][ecoacao.handler] shutdown complete!
+[2015-12-31 08:38:44,134][INFO][org.eclipse.jetty.server.ServerConnector] Stopped ServerConnector@506e6069{HTTP/1.1,[http/1.1]}{0.0.0.0:3000}
+[2015-12-31 08:38:51,994][INFO][com.zaxxer.hikari.HikariDataSource] HikariPool-1 - is starting.
+[2015-12-31 08:38:52,034][INFO][ecoacao.handler] #'ecoacao.db.core/*db* started
+[2015-12-31 08:38:52,034][INFO][ecoacao.config] 
+-=[ecoacao started successfully using the development profile]=-
+[2015-12-31 08:38:52,037][INFO][org.eclipse.jetty.server.Server] jetty-9.3.0.v20150612
+[2015-12-31 08:38:52,039][INFO][org.eclipse.jetty.server.ServerConnector] Started ServerConnector@70bc838a{HTTP/1.1,[http/1.1]}{0.0.0.0:3000}
+[2015-12-31 08:38:52,040][INFO][org.eclipse.jetty.server.Server] Started @1499435ms
+[2015-12-31 08:47:55,417][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-1 - Unusual system clock change detected, soft-evicting connections from pool.
+[2015-12-31 09:08:07,699][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-1 - Unusual system clock change detected, soft-evicting connections from pool.
+[2015-12-31 09:17:49,772][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-1 - Unusual system clock change detected, soft-evicting connections from pool.
+[2015-12-31 09:23:04,847][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-1 - Unusual system clock change detected, soft-evicting connections from pool.
+[2015-12-31 09:57:08,009][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-1 - Unusual system clock change detected, soft-evicting connections from pool.
+[2015-12-31 10:07:27,259][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-1 - Unusual system clock change detected, soft-evicting connections from pool.
+[2015-12-31 10:23:10,012][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-1 - Unusual system clock change detected, soft-evicting connections from pool.
+[2015-12-31 10:33:21,838][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-1 - Unusual system clock change detected, soft-evicting connections from pool.
+[2015-12-31 10:43:05,284][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-1 - Unusual system clock change detected, soft-evicting connections from pool.
+[2015-12-31 10:52:48,117][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-1 - Unusual system clock change detected, soft-evicting connections from pool.
+[2015-12-31 11:02:30,682][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-1 - Unusual system clock change detected, soft-evicting connections from pool.
+[2015-12-31 11:12:13,349][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-1 - Unusual system clock change detected, soft-evicting connections from pool.
+[2015-12-31 11:21:55,952][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-1 - Unusual system clock change detected, soft-evicting connections from pool.
+[2015-12-31 11:32:08,410][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-1 - Unusual system clock change detected, soft-evicting connections from pool.
+[2015-12-31 11:41:51,166][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-1 - Unusual system clock change detected, soft-evicting connections from pool.
+[2015-12-31 11:51:33,533][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-1 - Unusual system clock change detected, soft-evicting connections from pool.
+[2015-12-31 11:56:43,267][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-1 - Unusual system clock change detected, soft-evicting connections from pool.
+[2015-12-31 12:06:55,789][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-1 - Unusual system clock change detected, soft-evicting connections from pool.
+[2015-12-31 12:16:38,677][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-1 - Unusual system clock change detected, soft-evicting connections from pool.
+[2015-12-31 12:26:21,205][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-1 - Unusual system clock change detected, soft-evicting connections from pool.
+[2015-12-31 12:36:03,815][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-1 - Unusual system clock change detected, soft-evicting connections from pool.
+[2015-12-31 12:45:46,405][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-1 - Unusual system clock change detected, soft-evicting connections from pool.
+[2015-12-31 12:55:28,803][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-1 - Unusual system clock change detected, soft-evicting connections from pool.
+[2015-12-31 13:05:41,630][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-1 - Unusual system clock change detected, soft-evicting connections from pool.
+[2015-12-31 13:15:23,565][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-1 - Unusual system clock change detected, soft-evicting connections from pool.
+[2015-12-31 13:25:07,008][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-1 - Unusual system clock change detected, soft-evicting connections from pool.
+[2015-12-31 13:34:49,408][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-1 - Unusual system clock change detected, soft-evicting connections from pool.
+[2015-12-31 13:44:32,130][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-1 - Unusual system clock change detected, soft-evicting connections from pool.
+[2015-12-31 13:54:14,217][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-1 - Unusual system clock change detected, soft-evicting connections from pool.
+[2015-12-31 14:03:58,012][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-1 - Unusual system clock change detected, soft-evicting connections from pool.
+[2015-12-31 14:14:09,865][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-1 - Unusual system clock change detected, soft-evicting connections from pool.
+[2015-12-31 14:23:52,311][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-1 - Unusual system clock change detected, soft-evicting connections from pool.
+[2015-12-31 14:33:34,511][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-1 - Unusual system clock change detected, soft-evicting connections from pool.
+[2015-12-31 14:38:10,634][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-1 - Unusual system clock change detected, soft-evicting connections from pool.
+[2015-12-31 16:27:38,593][INFO][com.zaxxer.hikari.pool.HikariPool] HikariPool-1 - is closing down.
+[2015-12-31 16:27:47,219][INFO][com.zaxxer.hikari.HikariDataSource] HikariPool-2 - is starting.
+[2015-12-31 16:30:08,495][INFO][com.zaxxer.hikari.pool.HikariPool] HikariPool-2 - is closing down.
+[2015-12-31 16:30:15,149][INFO][com.zaxxer.hikari.HikariDataSource] HikariPool-3 - is starting.
+[2015-12-31 16:30:26,395][INFO][com.zaxxer.hikari.pool.HikariPool] HikariPool-3 - is closing down.
+[2015-12-31 16:30:30,506][INFO][com.zaxxer.hikari.HikariDataSource] HikariPool-4 - is starting.
+[2015-12-31 16:31:03,235][INFO][ecoacao.handler] ecoacao is shutting down...
+[2015-12-31 16:31:03,242][INFO][com.zaxxer.hikari.pool.HikariPool] HikariPool-4 - is closing down.
+[2015-12-31 16:31:03,248][INFO][ecoacao.handler] #'ecoacao.db.core/*db* stopped
+[2015-12-31 16:31:03,248][INFO][ecoacao.handler] shutdown complete!
+[2015-12-31 16:31:03,253][INFO][org.eclipse.jetty.server.ServerConnector] Stopped ServerConnector@70bc838a{HTTP/1.1,[http/1.1]}{0.0.0.0:3000}
+[2015-12-31 16:31:08,420][INFO][com.zaxxer.hikari.HikariDataSource] HikariPool-5 - is starting.
+[2015-12-31 16:31:08,469][INFO][ecoacao.handler] #'ecoacao.db.core/*db* started
+[2015-12-31 16:31:08,469][INFO][ecoacao.config] 
+-=[ecoacao started successfully using the development profile]=-
+[2015-12-31 16:31:08,474][INFO][org.eclipse.jetty.server.Server] jetty-9.3.0.v20150612
+[2015-12-31 16:31:08,478][INFO][org.eclipse.jetty.server.ServerConnector] Started ServerConnector@51f5b940{HTTP/1.1,[http/1.1]}{0.0.0.0:3000}
+[2015-12-31 16:31:08,478][INFO][org.eclipse.jetty.server.Server] Started @12716971ms
+[2015-12-31 17:03:51,480][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-5 - Unusual system clock change detected, soft-evicting connections from pool.
+[2015-12-31 17:08:13,442][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-5 - Unusual system clock change detected, soft-evicting connections from pool.
+[2015-12-31 17:53:54,659][INFO][ecoacao.handler] ecoacao is shutting down...
+[2015-12-31 17:53:54,669][INFO][com.zaxxer.hikari.pool.HikariPool] HikariPool-5 - is closing down.
+[2015-12-31 17:53:54,674][INFO][ecoacao.handler] #'ecoacao.db.core/*db* stopped
+[2015-12-31 17:53:54,675][INFO][ecoacao.handler] shutdown complete!
+[2015-12-31 17:53:54,692][INFO][org.eclipse.jetty.server.ServerConnector] Stopped ServerConnector@51f5b940{HTTP/1.1,[http/1.1]}{0.0.0.0:3000}
+[2015-12-31 17:53:56,631][INFO][com.zaxxer.hikari.HikariDataSource] HikariPool-6 - is starting.
+[2015-12-31 17:53:56,698][INFO][ecoacao.handler] #'ecoacao.db.core/*db* started
+[2015-12-31 17:53:56,702][INFO][ecoacao.config] 
+-=[ecoacao started successfully using the development profile]=-
+[2015-12-31 17:53:56,708][INFO][org.eclipse.jetty.server.Server] jetty-9.3.0.v20150612
+[2015-12-31 17:53:56,715][INFO][org.eclipse.jetty.server.ServerConnector] Started ServerConnector@41be5101{HTTP/1.1,[http/1.1]}{0.0.0.0:3000}
+[2015-12-31 17:53:56,717][INFO][org.eclipse.jetty.server.Server] Started @16899868ms
+[2015-12-31 18:04:31,751][INFO][com.zaxxer.hikari.pool.HikariPool] HikariPool-6 - is closing down.
+[2015-12-31 18:04:39,904][INFO][com.zaxxer.hikari.HikariDataSource] HikariPool-7 - is starting.
+[2015-12-31 18:04:48,413][INFO][ecoacao.handler] ecoacao is shutting down...
+[2015-12-31 18:04:48,414][INFO][com.zaxxer.hikari.pool.HikariPool] HikariPool-7 - is closing down.
+[2015-12-31 18:04:48,418][INFO][ecoacao.handler] #'ecoacao.db.core/*db* stopped
+[2015-12-31 18:04:48,418][INFO][ecoacao.handler] shutdown complete!
+[2015-12-31 18:04:48,420][INFO][org.eclipse.jetty.server.ServerConnector] Stopped ServerConnector@41be5101{HTTP/1.1,[http/1.1]}{0.0.0.0:3000}
+[2015-12-31 18:04:49,873][INFO][com.zaxxer.hikari.HikariDataSource] HikariPool-8 - is starting.
+[2015-12-31 18:04:49,901][INFO][ecoacao.handler] #'ecoacao.db.core/*db* started
+[2015-12-31 18:04:49,901][INFO][ecoacao.config] 
+-=[ecoacao started successfully using the development profile]=-
+[2015-12-31 18:04:49,904][INFO][org.eclipse.jetty.server.Server] jetty-9.3.0.v20150612
+[2015-12-31 18:04:49,907][INFO][org.eclipse.jetty.server.ServerConnector] Started ServerConnector@1338a3f5{HTTP/1.1,[http/1.1]}{0.0.0.0:3000}
+[2015-12-31 18:04:49,908][INFO][org.eclipse.jetty.server.Server] Started @17553032ms
+[2015-12-31 18:07:51,054][INFO][com.zaxxer.hikari.pool.HikariPool] HikariPool-8 - is closing down.
+[2015-12-31 18:08:06,609][INFO][com.zaxxer.hikari.HikariDataSource] HikariPool-9 - is starting.
+[2015-12-31 18:08:06,655][INFO][ecoacao.handler] #'ecoacao.db.core/*db* started
+[2015-12-31 18:08:06,655][INFO][ecoacao.config] 
+-=[ecoacao started successfully using the development profile]=-
+[2015-12-31 18:08:06,656][INFO][org.eclipse.jetty.server.Server] jetty-9.3.0.v20150612
+[2015-12-31 18:08:12,249][INFO][ecoacao.handler] ecoacao is shutting down...
+[2015-12-31 18:08:12,250][INFO][com.zaxxer.hikari.pool.HikariPool] HikariPool-9 - is closing down.
+[2015-12-31 18:08:12,252][INFO][ecoacao.handler] #'ecoacao.db.core/*db* stopped
+[2015-12-31 18:08:12,252][INFO][ecoacao.handler] shutdown complete!
+[2015-12-31 18:08:12,253][INFO][org.eclipse.jetty.server.ServerConnector] Stopped ServerConnector@1338a3f5{HTTP/1.1,[http/1.1]}{0.0.0.0:3000}
+[2015-12-31 18:08:13,969][INFO][com.zaxxer.hikari.HikariDataSource] HikariPool-10 - is starting.
+[2015-12-31 18:08:14,016][INFO][ecoacao.handler] #'ecoacao.db.core/*db* started
+[2015-12-31 18:08:14,016][INFO][ecoacao.config] 
+-=[ecoacao started successfully using the development profile]=-
+[2015-12-31 18:08:14,018][INFO][org.eclipse.jetty.server.Server] jetty-9.3.0.v20150612
+[2015-12-31 18:08:14,021][INFO][org.eclipse.jetty.server.ServerConnector] Started ServerConnector@2f986e29{HTTP/1.1,[http/1.1]}{0.0.0.0:3000}
+[2015-12-31 18:08:14,021][INFO][org.eclipse.jetty.server.Server] Started @17757137ms
+[2015-12-31 19:10:00,038][INFO][com.zaxxer.hikari.pool.HikariPool] HikariPool-10 - is closing down.
+[2015-12-31 19:10:12,226][INFO][ecoacao.handler] ecoacao is shutting down...
+[2015-12-31 19:10:12,228][INFO][ecoacao.handler] shutdown complete!
+[2015-12-31 19:10:12,230][INFO][org.eclipse.jetty.server.ServerConnector] Stopped ServerConnector@2f986e29{HTTP/1.1,[http/1.1]}{0.0.0.0:3000}
+[2015-12-31 19:10:14,279][INFO][com.zaxxer.hikari.HikariDataSource] HikariPool-11 - is starting.
+[2015-12-31 19:10:14,305][INFO][ecoacao.handler] #'ecoacao.db.core/*db* started
+[2015-12-31 19:10:14,305][INFO][ecoacao.config] 
+-=[ecoacao started successfully using the development profile]=-
+[2015-12-31 19:10:14,306][INFO][org.eclipse.jetty.server.Server] jetty-9.3.0.v20150612
+[2015-12-31 19:10:14,308][INFO][org.eclipse.jetty.server.ServerConnector] Started ServerConnector@b89af35{HTTP/1.1,[http/1.1]}{0.0.0.0:3000}
+[2015-12-31 19:10:14,311][INFO][org.eclipse.jetty.server.Server] Started @21477279ms
+[2015-12-31 19:10:48,254][INFO][com.zaxxer.hikari.pool.HikariPool] HikariPool-11 - is closing down.
+[2015-12-31 19:12:29,577][INFO][com.zaxxer.hikari.HikariDataSource] HikariPool-12 - is starting.
+[2015-12-31 19:12:29,621][INFO][ecoacao.handler] #'ecoacao.db.core/*db* started
+[2015-12-31 19:12:29,621][INFO][ecoacao.config] 
+-=[ecoacao started successfully using the development profile]=-
+[2015-12-31 19:12:29,622][INFO][org.eclipse.jetty.server.Server] jetty-9.3.0.v20150612
+[2015-12-31 19:12:35,034][INFO][ecoacao.config] 
+-=[ecoacao started successfully using the development profile]=-
+[2015-12-31 19:12:35,034][INFO][org.eclipse.jetty.server.Server] jetty-9.3.0.v20150612
+[2015-12-31 19:12:42,493][INFO][ecoacao.config] 
+-=[ecoacao started successfully using the development profile]=-
+[2015-12-31 19:12:42,495][INFO][org.eclipse.jetty.server.Server] jetty-9.3.0.v20150612
+[2015-12-31 19:13:04,214][INFO][com.zaxxer.hikari.pool.HikariPool] HikariPool-12 - is closing down.
+[2015-12-31 19:13:13,159][INFO][com.zaxxer.hikari.HikariDataSource] HikariPool-13 - is starting.
+[2015-12-31 19:13:13,181][INFO][ecoacao.handler] #'ecoacao.db.core/*db* started
+[2015-12-31 19:13:13,181][INFO][ecoacao.config] 
+-=[ecoacao started successfully using the development profile]=-
+[2015-12-31 19:13:13,181][INFO][org.eclipse.jetty.server.Server] jetty-9.3.0.v20150612
+[2015-12-31 19:13:24,685][INFO][ecoacao.config] 
+-=[ecoacao started successfully using the development profile]=-
+[2015-12-31 19:13:24,685][INFO][org.eclipse.jetty.server.Server] jetty-9.3.0.v20150612
+[2015-12-31 19:13:24,686][INFO][org.eclipse.jetty.server.ServerConnector] Started ServerConnector@487154da{HTTP/1.1,[http/1.1]}{0.0.0.0:3001}
+[2015-12-31 19:13:24,687][INFO][org.eclipse.jetty.server.Server] Started @21667648ms
+[2015-12-31 19:17:34,758][INFO][com.zaxxer.hikari.pool.HikariPool] HikariPool-13 - is closing down.
+[2015-12-31 19:17:53,087][INFO][ecoacao.handler] ecoacao is shutting down...
+[2015-12-31 19:17:53,088][INFO][ecoacao.handler] shutdown complete!
+[2015-12-31 19:17:53,089][INFO][org.eclipse.jetty.server.ServerConnector] Stopped ServerConnector@487154da{HTTP/1.1,[http/1.1]}{0.0.0.0:3001}
+[2015-12-31 19:17:55,395][INFO][com.zaxxer.hikari.HikariDataSource] HikariPool-14 - is starting.
+[2015-12-31 19:17:55,434][INFO][ecoacao.handler] #'ecoacao.db.core/*db* started
+[2015-12-31 19:17:55,434][INFO][ecoacao.config] 
+-=[ecoacao started successfully using the development profile]=-
+[2015-12-31 19:17:55,434][INFO][org.eclipse.jetty.server.Server] jetty-9.3.0.v20150612
+[2015-12-31 19:17:55,436][INFO][org.eclipse.jetty.server.ServerConnector] Started ServerConnector@10965eb8{HTTP/1.1,[http/1.1]}{0.0.0.0:3001}
+[2015-12-31 19:17:55,438][INFO][org.eclipse.jetty.server.Server] Started @21938387ms
+[2015-12-31 19:25:01,126][INFO][org.eclipse.jetty.util.log] Logging initialized @29002ms
+[2015-12-31 19:25:40,723][INFO][com.zaxxer.hikari.HikariDataSource] HikariPool-0 - is starting.
+[2015-12-31 19:25:41,023][INFO][ecoacao.handler] #'ecoacao.db.core/*db* started
+[2015-12-31 19:25:41,024][INFO][ecoacao.config] 
+-=[ecoacao started successfully using the development profile]=-
+[2015-12-31 19:25:41,065][INFO][org.eclipse.jetty.server.Server] jetty-9.3.0.v20150612
+[2015-12-31 19:25:41,113][INFO][org.eclipse.jetty.server.ServerConnector] Started ServerConnector@31fc86ad{HTTP/1.1,[http/1.1]}{0.0.0.0:3000}
+[2015-12-31 19:25:41,114][INFO][org.eclipse.jetty.server.Server] Started @68990ms
+[2015-12-31 19:52:22,858][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-0 - Unusual system clock change detected, soft-evicting connections from pool.
+[2015-12-31 20:02:36,333][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-0 - Unusual system clock change detected, soft-evicting connections from pool.
+[2015-12-31 20:09:44,724][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-0 - Unusual system clock change detected, soft-evicting connections from pool.
+[2015-12-31 20:32:57,525][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-0 - Unusual system clock change detected, soft-evicting connections from pool.
+[2015-12-31 20:43:10,914][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-0 - Unusual system clock change detected, soft-evicting connections from pool.
+[2015-12-31 20:52:52,821][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-0 - Unusual system clock change detected, soft-evicting connections from pool.
+[2015-12-31 20:54:50,934][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-0 - Unusual system clock change detected, soft-evicting connections from pool.
+[2015-12-31 21:05:03,595][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-0 - Unusual system clock change detected, soft-evicting connections from pool.
+[2015-12-31 21:07:01,585][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-0 - Unusual system clock change detected, soft-evicting connections from pool.
+[2015-12-31 21:16:44,008][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-0 - Unusual system clock change detected, soft-evicting connections from pool.
+[2015-12-31 21:18:42,223][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-0 - Unusual system clock change detected, soft-evicting connections from pool.
+[2015-12-31 21:28:54,939][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-0 - Unusual system clock change detected, soft-evicting connections from pool.
+[2015-12-31 21:38:36,788][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-0 - Unusual system clock change detected, soft-evicting connections from pool.
+[2015-12-31 21:48:49,964][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-0 - Unusual system clock change detected, soft-evicting connections from pool.
+[2015-12-31 21:59:02,668][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-0 - Unusual system clock change detected, soft-evicting connections from pool.
+[2015-12-31 22:08:45,385][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-0 - Unusual system clock change detected, soft-evicting connections from pool.
+[2015-12-31 22:18:57,164][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-0 - Unusual system clock change detected, soft-evicting connections from pool.
+[2015-12-31 22:29:10,416][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-0 - Unusual system clock change detected, soft-evicting connections from pool.
+[2015-12-31 22:38:52,745][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-0 - Unusual system clock change detected, soft-evicting connections from pool.
+[2015-12-31 22:49:06,040][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-0 - Unusual system clock change detected, soft-evicting connections from pool.
+[2015-12-31 22:51:03,333][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-0 - Unusual system clock change detected, soft-evicting connections from pool.
+[2015-12-31 23:00:45,865][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-0 - Unusual system clock change detected, soft-evicting connections from pool.
+[2015-12-31 23:02:44,022][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-0 - Unusual system clock change detected, soft-evicting connections from pool.
+[2015-12-31 23:12:56,570][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-0 - Unusual system clock change detected, soft-evicting connections from pool.
+[2015-12-31 23:14:24,719][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-0 - Unusual system clock change detected, soft-evicting connections from pool.
+[2015-12-31 23:24:37,420][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-0 - Unusual system clock change detected, soft-evicting connections from pool.
+[2015-12-31 23:34:50,158][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-0 - Unusual system clock change detected, soft-evicting connections from pool.
+[2015-12-31 23:44:32,888][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-0 - Unusual system clock change detected, soft-evicting connections from pool.
+[2015-12-31 23:54:45,610][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-0 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-01 00:04:58,426][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-0 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-01 00:14:41,166][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-0 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-01 00:24:53,201][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-0 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-01 00:35:06,405][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-0 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-01 00:36:34,619][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-0 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-01 00:46:48,007][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-0 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-01 00:56:32,013][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-0 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-01 01:06:44,006][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-0 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-01 01:16:57,381][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-0 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-01 01:26:40,638][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-0 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-01 01:36:54,110][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-0 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-01 01:38:52,023][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-0 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-01 01:48:34,722][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-0 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-01 01:50:32,799][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-0 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-01 02:00:46,379][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-0 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-01 02:10:29,918][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-0 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-01 02:20:43,274][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-0 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-01 02:30:56,421][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-0 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-01 02:40:39,505][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-0 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-01 02:50:52,906][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-0 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-01 03:01:06,204][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-0 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-01 03:02:33,250][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-0 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-01 03:12:46,716][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-0 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-01 03:14:43,930][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-0 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-01 03:24:27,114][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-0 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-01 03:26:24,337][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-0 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-01 03:36:37,969][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-0 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-01 03:46:21,220][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-0 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-01 03:56:34,241][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-0 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-01 04:06:47,708][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-0 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-01 04:16:31,345][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-0 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-01 04:26:44,456][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-0 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-01 04:36:57,911][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-0 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-01 04:46:41,208][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-0 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-01 04:48:38,122][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-0 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-01 04:58:51,562][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-0 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-01 05:00:19,216][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-0 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-01 05:10:32,248][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-0 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-01 05:12:01,002][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-0 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-01 05:22:14,259][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-0 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-01 05:32:27,811][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-0 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-01 05:42:11,210][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-0 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-01 05:52:24,428][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-0 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-01 06:02:37,716][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-0 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-01 06:12:21,205][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-0 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-01 06:22:34,506][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-0 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-01 06:32:47,926][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-0 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-01 06:42:31,024][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-0 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-01 06:44:29,278][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-0 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-01 06:54:42,418][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-0 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-01 06:56:09,425][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-0 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-01 07:06:23,120][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-0 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-01 07:08:20,003][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-0 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-01 07:18:03,471][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-0 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-01 07:28:16,721][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-0 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-01 07:38:30,090][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-0 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-01 07:48:13,509][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-0 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-01 07:58:27,152][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-0 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-01 08:08:40,554][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-0 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-01 08:18:24,295][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-0 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-01 08:28:37,208][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-0 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-01 08:38:51,021][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-0 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-01 08:40:19,161][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-0 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-01 08:50:32,126][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-0 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-01 08:52:30,633][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-0 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-01 09:02:12,817][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-0 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-01 09:04:10,438][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-0 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-01 09:14:23,618][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-0 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-01 09:24:06,906][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-0 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-01 09:34:21,106][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-0 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-01 09:44:34,321][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-0 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-01 09:54:17,927][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-0 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-01 09:56:16,123][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-0 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-01 10:05:59,503][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-0 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-01 10:16:13,284][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-0 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-01 10:26:26,632][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-0 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-01 10:36:10,224][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-0 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-01 10:46:22,911][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-0 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-01 10:56:36,974][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-0 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-01 11:06:20,315][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-0 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-01 11:16:33,607][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-0 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-01 11:26:46,757][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-0 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-01 11:36:29,940][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-0 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-01 11:46:43,127][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-0 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-01 11:56:56,366][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-0 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-01 12:06:39,542][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-0 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-01 12:16:53,370][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-0 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-01 12:27:06,884][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-0 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-01 12:36:50,518][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-0 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-01 12:47:03,912][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-0 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-01 12:57:17,165][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-0 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-01 12:58:45,409][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-0 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-01 13:08:58,854][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-0 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-01 13:10:56,906][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-0 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-01 13:20:40,269][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-0 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-01 13:22:38,335][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-0 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-01 13:32:51,923][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-0 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-01 13:42:35,138][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-0 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-01 13:52:48,509][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-0 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-01 14:03:01,912][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-0 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-01 14:12:45,502][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-0 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-01 14:22:59,168][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-0 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-01 14:33:12,402][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-0 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-01 14:42:59,014][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-0 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-01 14:53:12,763][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-0 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-01 14:54:42,002][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-0 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-01 15:04:54,695][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-0 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-01 15:06:52,409][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-0 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-01 15:16:35,079][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-0 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-01 15:18:33,962][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-0 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-01 15:28:47,618][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-0 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-01 15:38:31,002][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-0 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-01 15:48:47,904][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-0 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-01 15:59:00,944][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-0 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-01 16:08:42,809][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-0 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-01 16:18:57,841][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-0 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-01 16:29:11,517][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-0 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-01 16:30:40,168][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-0 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-01 16:40:53,052][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-0 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-01 16:42:50,832][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-0 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-01 16:52:34,108][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-0 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-01 16:54:31,913][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-0 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-01 17:04:45,545][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-0 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-01 17:14:28,668][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-0 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-01 17:24:42,191][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-0 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-01 17:34:54,189][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-0 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-01 17:44:37,509][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-0 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-01 17:54:51,938][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-0 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-01 18:05:05,286][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-0 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-01 18:14:48,722][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-0 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-01 18:25:02,256][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-0 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-01 18:26:59,341][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-0 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-01 18:36:42,790][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-0 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-01 18:38:40,957][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-0 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-01 18:41:39,874][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-0 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-01 19:24:58,745][INFO][com.zaxxer.hikari.pool.HikariPool] HikariPool-0 - is closing down.
+[2016-01-01 19:34:15,204][INFO][com.zaxxer.hikari.HikariDataSource] HikariPool-1 - is starting.
+[2016-01-01 19:38:00,365][INFO][com.zaxxer.hikari.HikariDataSource] HikariPool-2 - is starting.
+[2016-01-01 19:43:23,359][INFO][com.zaxxer.hikari.pool.HikariPool] HikariPool-1 - is closing down.
+[2016-01-01 19:43:23,888][INFO][com.zaxxer.hikari.HikariDataSource] HikariPool-3 - is starting.
+[2016-01-01 20:12:02,978][INFO][com.zaxxer.hikari.pool.HikariPool] HikariPool-3 - is closing down.
+[2016-01-01 20:12:09,356][INFO][com.zaxxer.hikari.HikariDataSource] HikariPool-4 - is starting.
+[2016-01-01 20:25:47,344][INFO][com.zaxxer.hikari.pool.HikariPool] HikariPool-4 - is closing down.
+[2016-01-01 20:25:55,235][INFO][com.zaxxer.hikari.HikariDataSource] HikariPool-5 - is starting.
+[2016-01-01 21:26:58,613][INFO][com.zaxxer.hikari.pool.HikariPool] HikariPool-5 - is closing down.
+[2016-01-01 21:27:05,481][INFO][com.zaxxer.hikari.HikariDataSource] HikariPool-6 - is starting.
+[2016-01-01 22:40:14,268][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-2 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-01 22:40:19,098][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-6 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-01 22:50:04,008][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-6 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-01 22:50:27,848][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-2 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-01 23:00:12,661][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-2 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-01 23:00:17,490][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-6 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-01 23:10:25,678][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-2 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-01 23:10:30,510][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-6 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-01 23:16:23,537][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-6 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-01 23:16:48,708][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-2 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-01 23:26:33,178][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-2 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-01 23:26:38,006][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-6 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-01 23:36:15,622][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-2 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-01 23:36:20,451][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-6 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-01 23:46:05,195][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-6 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-01 23:46:30,368][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-2 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-01 23:56:14,258][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-2 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-01 23:56:19,086][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-6 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-02 00:05:57,970][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-2 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-02 00:06:02,802][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-6 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-02 00:15:41,486][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-2 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-02 00:15:46,315][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-6 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-02 00:25:24,089][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-2 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-02 00:25:28,920][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-6 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-02 00:35:08,441][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-2 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-02 00:35:13,271][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-6 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-02 00:44:51,211][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-2 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-02 00:44:56,608][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-6 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-02 00:54:39,515][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-6 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-02 00:55:04,858][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-2 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-02 01:04:47,973][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-2 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-02 01:04:52,804][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-6 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-02 01:14:29,796][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-2 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-02 01:14:34,628][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-6 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-02 01:24:14,950][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-2 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-02 01:24:19,776][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-6 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-02 01:33:57,921][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-2 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-02 01:34:02,751][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-6 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-02 01:43:41,099][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-2 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-02 01:43:45,927][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-6 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-02 01:53:24,020][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-2 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-02 01:53:29,499][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-6 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-02 02:03:13,019][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-6 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-02 02:03:37,890][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-2 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-02 02:13:21,018][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-2 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-02 02:13:25,840][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-6 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-02 02:23:04,573][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-2 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-02 02:23:09,397][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-6 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-02 02:32:48,130][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-2 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-02 02:32:52,960][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-6 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-02 02:42:31,701][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-2 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-02 02:42:36,528][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-6 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-02 02:52:15,433][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-2 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-02 02:52:20,262][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-6 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-02 03:02:03,960][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-6 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-02 03:02:29,138][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-2 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-02 03:12:12,844][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-2 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-02 03:12:17,675][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-6 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-02 03:21:55,916][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-2 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-02 03:22:00,745][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-6 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-02 03:31:39,845][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-2 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-02 03:31:44,675][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-6 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-02 03:41:23,029][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-2 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-02 03:41:27,859][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-6 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-02 03:51:06,865][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-2 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-02 03:51:11,694][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-6 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-02 04:00:49,958][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-2 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-02 04:00:54,791][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-6 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-02 04:10:38,457][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-6 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-02 04:11:03,633][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-2 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-02 04:20:46,946][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-2 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-02 04:20:51,774][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-6 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-02 04:30:28,757][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-2 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-02 04:30:33,586][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-6 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-02 04:40:12,313][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-2 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-02 04:40:17,134][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-6 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-02 04:49:55,958][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-2 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-02 04:50:00,787][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-6 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-02 04:59:40,135][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-2 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-02 04:59:44,963][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-6 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-02 05:09:23,019][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-2 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-02 05:09:26,569][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-6 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-02 05:19:11,011][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-6 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-02 05:19:36,569][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-2 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-02 05:29:19,701][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-2 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-02 05:29:24,530][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-6 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-02 05:39:03,259][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-2 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-02 05:39:08,090][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-6 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-02 05:48:46,678][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-2 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-02 05:48:51,509][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-6 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-02 05:58:30,047][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-2 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-02 05:58:34,870][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-6 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-02 06:08:13,873][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-2 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-02 06:08:18,704][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-6 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-02 06:17:57,161][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-2 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-02 06:18:02,213][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-6 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-02 06:27:45,610][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-6 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-02 06:28:10,781][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-2 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-02 06:37:54,219][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-2 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-02 06:37:59,049][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-6 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-02 06:47:37,989][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-2 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-02 06:47:42,818][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-6 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-02 06:57:21,496][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-2 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-02 06:57:26,327][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-6 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-02 07:00:33,521][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-2 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-02 07:00:38,342][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-6 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-02 07:28:27,109][INFO][com.zaxxer.hikari.pool.HikariPool] HikariPool-6 - is closing down.
+[2016-01-02 07:28:32,839][INFO][com.zaxxer.hikari.HikariDataSource] HikariPool-7 - is starting.
+[2016-01-02 07:48:58,364][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-7 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-02 07:48:59,094][WARN][com.zaxxer.hikari.pool.HikariPool] HikariPool-2 - Unusual system clock change detected, soft-evicting connections from pool.
+[2016-01-02 07:49:04,491][INFO][ecoacao.handler] ecoacao is shutting down...
+[2016-01-02 07:49:04,503][INFO][com.zaxxer.hikari.pool.HikariPool] HikariPool-7 - is closing down.
+[2016-01-02 07:49:04,510][INFO][ecoacao.handler] #'ecoacao.db.core/*db* stopped
+[2016-01-02 07:49:04,510][INFO][ecoacao.handler] shutdown complete!
+[2016-01-02 07:49:04,570][INFO][org.eclipse.jetty.server.ServerConnector] Stopped ServerConnector@31fc86ad{HTTP/1.1,[http/1.1]}{0.0.0.0:3000}
+[2016-01-02 07:49:16,880][INFO][com.zaxxer.hikari.HikariDataSource] HikariPool-8 - is starting.
+[2016-01-02 07:49:16,921][INFO][ecoacao.handler] #'ecoacao.db.core/*db* started
+[2016-01-02 07:49:16,924][INFO][ecoacao.config] 
+-=[ecoacao started successfully using the development profile]=-
+[2016-01-02 07:49:16,934][INFO][org.eclipse.jetty.server.Server] jetty-9.3.0.v20150612
+[2016-01-02 07:49:16,939][INFO][org.eclipse.jetty.server.ServerConnector] Started ServerConnector@59d13503{HTTP/1.1,[http/1.1]}{0.0.0.0:3000}
+[2016-01-02 07:49:16,941][INFO][org.eclipse.jetty.server.Server] Started @28366842ms
+[2016-01-02 07:50:03,362][ERROR][ecoacao.middleware] #error {
+ :cause Unexpected character ('-' (code 45)) in numeric value: expected digit (0-9) to follow minus sign, for valid numeric value
+ at [Source: java.io.ByteArrayInputStream@497b0099; line: 1, column: 3]
+ :via
+ [{:type java.lang.RuntimeException
+   :message com.fasterxml.jackson.core.JsonParseException: Unexpected character ('-' (code 45)) in numeric value: expected digit (0-9) to follow minus sign, for valid numeric value
+ at [Source: java.io.ByteArrayInputStream@497b0099; line: 1, column: 3]
+   :at [com.cognitect.transit.impl.ReaderFactory$ReaderImpl read ReaderFactory.java 119]}
+  {:type com.fasterxml.jackson.core.JsonParseException
+   :message Unexpected character ('-' (code 45)) in numeric value: expected digit (0-9) to follow minus sign, for valid numeric value
+ at [Source: java.io.ByteArrayInputStream@497b0099; line: 1, column: 3]
+   :at [com.fasterxml.jackson.core.JsonParser _constructError JsonParser.java 1487]}]
+ :trace
+ [[com.fasterxml.jackson.core.JsonParser _constructError JsonParser.java 1487]
+  [com.fasterxml.jackson.core.base.ParserMinimalBase _reportError ParserMinimalBase.java 518]
+  [com.fasterxml.jackson.core.base.ParserBase reportUnexpectedNumberChar ParserBase.java 991]
+  [com.fasterxml.jackson.core.json.UTF8StreamJsonParser _handleInvalidNumberStart UTF8StreamJsonParser.java 2609]
+  [com.fasterxml.jackson.core.json.UTF8StreamJsonParser _parseNegNumber UTF8StreamJsonParser.java 1366]
+  [com.fasterxml.jackson.core.json.UTF8StreamJsonParser _nextTokenNotInObject UTF8StreamJsonParser.java 784]
+  [com.fasterxml.jackson.core.json.UTF8StreamJsonParser nextToken UTF8StreamJsonParser.java 697]
+  [com.cognitect.transit.impl.JsonParser parse JsonParser.java 43]
+  [com.cognitect.transit.impl.ReaderFactory$ReaderImpl read ReaderFactory.java 117]
+  [cognitect.transit$read invoke transit.clj 296]
+  [ring.middleware.format_params$make_transit_decoder$fn__6910 invoke format_params.clj 220]
+  [ring.middleware.format_params$wrap_format_params$fn__6861 invoke format_params.clj 108]
+  [ring.middleware.format_params$wrap_format_params$fn__6861 invoke format_params.clj 119]
+  [ring.middleware.format_response$wrap_format_response$fn__7618 invoke format_response.clj 183]
+  [ring.middleware.webjars$wrap_webjars$fn__15688 invoke webjars.clj 34]
+  [ring.middleware.flash$wrap_flash$fn__15746 invoke flash.clj 35]
+  [ring.middleware.session$wrap_session$fn__15914 invoke session.clj 102]
+  [ring.middleware.keyword_params$wrap_keyword_params$fn__7750 invoke keyword_params.clj 35]
+  [ring.middleware.nested_params$wrap_nested_params$fn__7800 invoke nested_params.clj 84]
+  [ring.middleware.multipart_params$wrap_multipart_params$fn__15957 invoke multipart_params.clj 117]
+  [ring.middleware.params$wrap_params$fn__7884 invoke params.clj 64]
+  [ring.middleware.cookies$wrap_cookies$fn__15863 invoke cookies.clj 161]
+  [ring.middleware.absolute_redirects$wrap_absolute_redirects$fn__16043 invoke absolute_redirects.clj 36]
+  [ring.middleware.resource$wrap_resource$fn__15977 invoke resource.clj 28]
+  [ring.middleware.content_type$wrap_content_type$fn__13706 invoke content_type.clj 30]
+  [ring.middleware.default_charset$wrap_default_charset$fn__16020 invoke default_charset.clj 26]
+  [ring.middleware.not_modified$wrap_not_modified$fn__13733 invoke not_modified.clj 52]
+  [ring.middleware.x_headers$wrap_xss_protection$fn__15724 invoke x_headers.clj 71]
+  [ring.middleware.x_headers$wrap_frame_options$fn__15712 invoke x_headers.clj 38]
+  [ring.middleware.x_headers$wrap_content_type_options$fn__15718 invoke x_headers.clj 53]
+  [ecoacao.middleware$wrap_context$fn__45691 invoke form-init2467352176653883385.clj 31]
+  [ecoacao.middleware$wrap_internal_error$fn__45699 invoke form-init2467352176653883385.clj 36]
+  [qbits.jet.server$make_handler$fn__23930 invoke server.clj 70]
+  [qbits.jet.server.proxy$org.eclipse.jetty.server.handler.AbstractHandler$ff19274a handle nil -1]
+  [org.eclipse.jetty.server.handler.HandlerList handle HandlerList.java 52]
+  [org.eclipse.jetty.server.handler.HandlerWrapper handle HandlerWrapper.java 118]
+  [org.eclipse.jetty.server.Server handle Server.java 515]
+  [org.eclipse.jetty.server.HttpChannel handle HttpChannel.java 291]
+  [org.eclipse.jetty.server.HttpConnection onFillable HttpConnection.java 242]
+  [org.eclipse.jetty.io.AbstractConnection$ReadCallback succeeded AbstractConnection.java 238]
+  [org.eclipse.jetty.io.FillInterest fillable FillInterest.java 95]
+  [org.eclipse.jetty.io.SelectChannelEndPoint$2 run SelectChannelEndPoint.java 57]
+  [org.eclipse.jetty.util.thread.strategy.ExecuteProduceConsume produceAndRun ExecuteProduceConsume.java 191]
+  [org.eclipse.jetty.util.thread.strategy.ExecuteProduceConsume run ExecuteProduceConsume.java 126]
+  [org.eclipse.jetty.util.thread.QueuedThreadPool runJob QueuedThreadPool.java 654]
+  [org.eclipse.jetty.util.thread.QueuedThreadPool$3 run QueuedThreadPool.java 572]
+  [java.lang.Thread run Thread.java 745]]}

@@ -5,8 +5,10 @@
             [goog.events :as events]
             [goog.history.EventType :as HistoryEventType]
             [markdown.core :refer [md->html]]
-            [ajax.core :refer [GET POST]]
-            [reagent-forms.core :refer [bind-fields]])
+            [ajax.core :refer [GET POST PUT]]
+            [reagent-forms.core :refer [bind-fields]]
+            [ecoacao.components.project :refer [new-project-page project-page projects-page]]
+            [ecoacao.components.user :refer [user-home]])
   (:import goog.History))
 
 (defn nav-link [uri title page collapsed?]
@@ -38,7 +40,8 @@
           [nav-link "#/" "Home" :home collapsed?]
           [nav-link "#/about" "About" :about collapsed?]
           [nav-link "#/new-project" "Novo Projeto" :new-project collapsed?]
-          [nav-link "#/projects" "Listar Projetos" :projects collapsed?]]]]])))
+          [nav-link "#/projects" "Listar Projetos" :projects collapsed?]
+          [nav-link "#/profile" "Perfil" :profile collapsed?]]]]])))
 
 (defn about-page []
   [:div.container
@@ -61,97 +64,13 @@
        [:div {:dangerouslySetInnerHTML
               {:__html (md->html docs)}}]]])])
 
-(defn form-group
-  ([id type placeholder label v k]
-   (form-group id type placeholder label v k :input))
-
-  ([id type placeholder label v k input-type]
-   [:div {:class "form-group"}
-    [:label {:for id} label]
-    [input-type {:type type, :class "form-control", :id id, :placeholder placeholder :value (k @v) :on-change #(swap! v assoc k (-> % .-target .-value))}]]))
-
-(defn text-area
-  [id placeholder label rows v k]
-   [:div {:class "form-group"}
-    [:label {:for id} label]
-    [:textarea {:class "form-control", :id id, :placeholder placeholder :rows rows :value (k @v) :on-change #(swap! v assoc k (-> % .-target .-value))}]])
-
-
-(defn new-project-page []
-  (let [project (atom {:name "" :goals "" :argument "" :expected-results ""})
-        save-project (fn []
-                       (POST "/api/project"
-                           {:params @project
-                            :error-handler #(js/console.log "error" %)
-                            :response-format :transit
-                            :handler (fn [response]
-                                       (session/put! :project response)
-                                       (secretary/dispatch! (str "/project/" (:id response))))}))]
-    (fn []
-      [:form
-       (form-group "name" "text" "Qual o nome do Projeto?" "Nome do Projeto: " project :name)
-       (text-area "goals" "Qual o Objetivo do Projeto?" "Objetivo:" 3 project :goals)
-       (text-area "argument" "Porque esse projeto existe?" "Justificativa:" 3 project :argument)
-       (text-area "expected" "Quais os Resultados Esperados?" "Resultados Esperados:" 3 project :expected-results)
-       [:button {:class "btn btn-default" :on-click save-project} "Cadastrar" ]])))
-
-(defn row [label & input]
-  [:div.row
-   [:div.col-md-2 [:label label]]
-   [:div.col-md-5 input]])
-
-(def project-form
-  [:div
-    (row "Nome" [:input.form-control {:field :text :id :name :readOnly true}])
-    (row "Aprovado?"
-         [:input.radio-inline {:field :radio :value true :name :approved} "Sim"]
-         [:input.radio-inline {:field :radio :value false :name :approved} "Não"])])
-
-(defn project-page []
-  (let [project (atom (session/get! :project))
-        id (session/get :project-id)]
-    (when (nil? (:id @project))
-      (prn (str @project))
-      (GET (str "/api/project/" id)
-          {:response-format :transit
-           :handler #(reset! project %)}))
-    (fn []
-      [:div.container
-       [:div.page-header "Moderar Projeto"]
-        [bind-fields project-form project]
-        [:button.btn.btn-default {:on-click #(js/console.log (str @project))} "Salvar"]])))
-
-(defn projects-page []
-  (let [projects (atom [])]
-    (fn []
-      (when (empty? @projects)
-        (GET "/api/project"
-          {:response-format :transit
-           :error-handler #(js/console.log "erro" %)
-           :handler #(reset! projects %)}))
-      [:div.container
-       [:div.row
-        [:div.col-md-12
-         [:table.table
-          [:thead
-           [:th "Nome"][:th "Objetivo"][:th "Justificativa"][:th "Resultados Esperados"]]
-          [:tbody
-           (for [project @projects]
-             ^{:key project}
-             [:tr
-              [:td (:name project)]
-              [:td (:goals project)]
-              [:td (:argument project)]
-              [:td (:expected-results project)]
-              [:td [:button {:on-click #(secretary/dispatch! (str "/project/" (:id project)))} "Detalhes"]]])]] ] ] ])))
-
-
 (def pages
   {:home #'home-page
    :about #'about-page
    :new-project new-project-page
    :project project-page
-   :projects projects-page})
+   :projects projects-page
+   :user-profile user-home})
 
 (defn page []
   [(pages (session/get :page))])
@@ -176,6 +95,10 @@
 (secretary/defroute "/projects" []
   (session/put! :page :projects))
 
+(secretary/defroute "/profile" []
+  (session/put! :page :user-profile))
+
+(session/put! :user {:id 1})
 ;; -------------------------
 ;; History
 ;; must be called after routes have been defined

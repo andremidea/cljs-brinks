@@ -7,10 +7,11 @@
                     argument
                     expected-results
                     approved
-                    comments])
+                    comments
+                    user-id])
 
 (defn create [map]
   (-> map
-      assoc :authorized false
+      (assoc :approved false)
       (map->Project)))
 
