@@ -83,4 +83,4 @@
       [:div.container
        [:div.row
         [:div.col-md-12
-          (projects-list @projects)] ] ])))
+          (projects-list @projects)]]])))
